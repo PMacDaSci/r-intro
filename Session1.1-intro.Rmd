@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Solving Biological Problems Using R - Day 1"
-author: Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
-  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts
+author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojnić,
+  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts (original material https://github.com/cambiotraining/r-intro).
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   html_notebook:
@@ -30,8 +30,6 @@ opts_chunk$set(comment = NA,eval=FALSE) # eliminates hashtag from R outputs
 
 1. Introduction to R and its environment
 2. Data Structures
-3. Data Analysis Walkthrough
-4. Plotting in R
 
 #1. Introduction to R and its environment
 
@@ -108,7 +106,7 @@ According to recent editorials, the reproducibility crisis is still on-going
 
 
 ##Getting started
-- Latest release 3.3.2 (October 2016)
+- Latest release R version 3.5.0 (Joy in Playing), April 2018
     + Base package and Contributed packages (general purpose extras)
     + `r length(XML:::readHTMLTable("http://cran.r-project.org/web/packages/available_packages_by_date.html")[[1]][[2]])` available packages as of `r date()`
 - Download from http://mirrors.ebi.ac.uk/CRAN/
@@ -571,21 +569,21 @@ biocLite("PackageName")
 install.packages("ggplot2")
 ```
    
-- `DESeq2` is a Bioconductor package (http://www.bioconductor.org) for the analysis of RNA-seq data:
+- `edgeR` is a Bioconductor package (http://www.bioconductor.org) for the analysis of RNA-seq data:
 
 ```{r eval=FALSE}
 source("http://www.bioconductor.org/biocLite.R")
-biocLite("DESeq2")
+biocLite("edgeR")
 ```
 
-##Example: Load packages ggplot2 and DESeq2
+##Example: Load packages ggplot2 and edgeR
 
 - R needs to be told to use the new functions from the installed packages. Use **`library(...)`** function to load the newly installed features:
 
 ```{r eval=FALSE}
  
 library(ggplot2) # loads ggplot functions
-library(DESeq2)   # loads DESeq functions
+library(edgeR)   # loads edgeR functions
 library()        # Lists all the packages 
                  # you've got installed 
 ```
