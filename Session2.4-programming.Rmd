@@ -402,7 +402,7 @@ Note: The title of the graph on each page should be changed to reflect the chrom
 Hint: Make use of the function `unique()`
 
 
-```{r, echo=FALSE}
+```{r,echo=FALSE}
 P1Exprs %>% 
     na.omit() %>%
     filter(Chromosome == "chr8") %>%
