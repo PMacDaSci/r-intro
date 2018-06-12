@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Solving Biological Problems Using R - Day 2"
-author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojnić,
+author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojni?,
   Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts (original material https://github.com/cambiotraining/r-intro).
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
@@ -24,231 +24,221 @@ library(RColorBrewer)
 ## Motivation
 Typically when we perform an analysis we want to perform the same analysis/steps on either multiple genes/samples/datasets.
 
-For example if we had a script that is written to analyse the gene ESR1, we could create a new script and edit it analyse a new gene.
-However, if we wanted to analyse 100/200/1000 genes this would be:
-- Tedious to create a new script for every gene
-- ...and prone to error too
+With the basic analysis and graphs that we have created in the previous sessions it is possible to
+copy and paste the relevant section of code and adjust the code.
 
-##Introducing loops
+However, consider the scenario where you have a script of several hundred lines to anaysis a patient/
+dataset.
 
-- Many programming languages have ways of doing the same thing many times, perhaps changing some variable each time. This is called **looping**
-- Loops are not used in R so often, because we can usually achieve the same thing using vector calculations
-- For example, to add two vectors together, we do not need to add each pair of elements one by one, we can just add the vectors
+Whilst you could copy that script and adjust the variables for each patient/dataset. However,
+this method of copying, pasting and editting can be:
+    1. Tedious
+    2. Erroreous
+    
 
+## Copy/Paste/Edit example
+Take the scenario where you want to identify the number of the genes on the 
+following chromosomes:  
+        Chromosomes 1, 5, 6, 8
 ```{r}
-x <- 1:10
-y <- 11:20
-x+y
-```
-
-- But there are some situations where R functions can not take vectors as input. For example, `t.test()` will only test one gene at a time
-- What if we wanted to test multiple genes?
-
-Import the data
-```{r}
-patients <- read.delim("updated.patient.txt", stringsAsFactors = FALSE)
-exprsAnno <- read.delim("anno.gene.expression.txt")
+patients <-  read.delim("updated.patient.txt", stringsAsFactors = FALSE)
+exprsAnno <- read.delim("anno.gene.expression.txt", stringsAsFactors = FALSE)
+### Insert your code here ###
 ```
 
 
-- We could run the following code to perform t-tests on the first two genes
+## Copy/Paste/Edit example 2
+Whilst the first example only contains 3 lines of code, and therefore is less likely to lead to errors
+imagine that you want to create multiple boxplots.
 
-- Note: First we must filter our data to obtain only the expression values
-
+For example below is the code to create histograms for the expression values of the following genes
+    - FOXE1  
+    - TECTA  
+    - BAX  
+    - MAP3K8  
+    - GEMIN8
 ```{r}
-exprs <- exprsAnno %>% select(starts_with("NKI"))
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "FOXE1") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "FOXE1"
+g <- ggplot(tmp, aes(y = FOXE1, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of FOXE1 ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of FOXE1") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+```
+
+or
+```
+exprsAnno %>% 
+    filter(Chromosome == "chr8") %>%
+    select("NKI_7") %>% 
+    ggplot(aes(x = NKI_7, fill = as.factor("NKI_7"))) +
+    geom_histogram() +
+    scale_fill_manual(values = "goldenrod", guide = "none") +
+    labs(title = "Expression of chr8 for patient NKI_7",
+         y = "Count",
+         x = "Expression values")
 ```
 ```{r, eval=FALSE}
-t.test(as.numeric(exprs[1,]) ~ factor(patients[, "er"]))
-t.test(as.numeric(exprs[2,]) ~ factor(patients[, "er"]))
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "TECTA") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "TECTA"
+g <- ggplot(tmp, aes(y = TECTA, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of TECTA ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of TECTA") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "BAX") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "BAX"
+g <- ggplot(tmp, aes(y = BAX, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of BAX ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of BAX") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+# ETC....
 ```
 
-- But for many genes this will be boring to type, difficult to change, and prone to error
-- As we are doing the same thing multiple times, but with a different index each time, we can use a **loop** instead
+As you can imagine the more lines of code that need to be copied/pasted and editted the more likely
+it is that errors will arise.
 
-##Loops: Commands and flow control
+## Loops: Commands and flow control
+- Many programming languages have ways of doing the same thing many times, perhaps changing some variable each time. This is called **looping**
+
+- As we are doing the same thing multiple times, but with a different index each time, we can use a **loop** instead
 - R has two basic types of loop
-    + a **`while`** loop: run some code while some condition is true (*hardly ever used!*)
+    + a **`while`** loop: run some code while some condition is true 
+    (*hardly ever used! Therefore will not be covered*)
     + a **`for`** loop: run some code on every value in a vector
     
-`while`
-
-The basic structure of a `while` loop:
-```
-while (condition is true) {
-    ... do this ...
-    }
-```
-- The code is run as many times as required until the condition is equal to FALSE. Therefore we can not anticipate the number of times the code is run.
-
-- Caution: Note that it is possible to set the condition of a while loop as one that is never satisfied. This will cause the loop to run indefinitely (AKA infinity loop)!
-```{r eval=FALSE}
-i <- 10
-while (i > 1){
-    print(i)
-    i <- runif(1, min = 0, max = 10)
-}
-print(i)
-```
-    
 `for` 
-
 The basic structure of a `for` loop:
 ```
 for (element in vector){
     ... do this ...
 }
+
 ```
 
-- In this case the code is only run for as many elements are in the vector. Therefore we can predict the number of time the code is run
+- Therefore the code is only run for as many elements are in the vector. Therefore we can predict the number of times the code is run
 
-- Note: The placeholder variable ("i" in this case) is stored as a variable in your environment.
-So keep this in mind when naming the placeholder, in order to not overwrite any variables.
+- Note: *element* and *vector* are just variable names and can therefore be named whatever you want
+them to be, as long as they satisfy the constriants on varible naming.
 
-```{r eval=FALSE}
-for (i in 1:10) {
-  print(i)
+- Here's how we might use a `for` loop to find out the number of genes on each chromosome.
+
+```{r}
+chrom <- c("chr1", "chr5", "chr6", "chr8")
+
+for (chr in chrom){
+    numRows <- exprsAnno %>%
+        filter(Chromosome == chr) %>%
+        summarise(n())
+    s <- paste("The number of genes on", chr, "is", numRows)
+    print(s)
 }
 
 ```
 
--The above for loop is *exactly* the same as:
+- The above for loop finds out the same information that we identified earlier by
+copying/pasting/editting
+- Though the more accurately depict the operations of a `for` loop the code is more similar to the
+following:
+```{r}
+chr <- "chr1"
+numRows <- exprsAnno %>% filter(Chromosome == chr) %>% summarise(n())
 
-```{r, eval=FALSE}
-i <- 1
-print(i)
-i <- 2
-print(i)
+chr <- "chr5"
+numRows <- exprsAnno %>% filter(Chromosome == chr) %>% summarise(n())
+
+chr <- "chr6"
+numRows <- exprsAnno %>% filter(Chromosome == chr) %>% summarise(n())
+
+chr <- "chr8"
+numRows <- exprsAnno %>% filter(Chromosome == chr) %>% summarise(n())
 ```
 
-- Here's how we might use a `for` loop to test the first 10 genes
-
-Note: The variable names used inside a `for` loop are overwritten as the loop is run
-```{r, eval=FALSE}
-for(i in 1:10) {
-  result <- t.test(as.numeric(exprs[i,]) ~ factor(patients[, "er"]))
-  print(result)
-  }
+## Exercise
+Find the number of patients who are aged above 20, 30, 40, and print the answer to the console.
+```{r}
+ages <- c(20, 30, 40)
+### Insert your code here ###
 ```
 
-- The above for loop can also be coded as:
+## Exercise
+Convert the code used to generate the boxplots in the second example of copy/paste/edit
+into a `for` loop
 
-```{r, eval=FALSE}
-i <- 1
-t.test(as.numeric(exprs[i, ]) ~ factor(patients[, "er"]))
-i <- 2
-t.test(as.numeric(exprs[i, ]) ~ factor(patients[, "er"]))
-i <- 3
-t.test(as.numeric(exprs[i, ]) ~ factor(patients[, "er"]))
-i <- 4
-## etc....
-```
+Which variables are you looping over?
 
+Hint: Consider using the function `paste()` to help change the y-axis label and title to reflect the
+gene that is being plotted
+
+# Saving multiple plots
+You can save all the plots produced by a `for` loop by using the `pdf()` function *outside* the `for`loop.
+This will create one file with all the plots.
+
+Otherwise, another option is to create a png/jpeg file for each graph *inside* the `for` loop.
 
 ## Storing results
 
-Note that this `for` loop is doing a `t.test()` calculation but not storing the results. Thus, we can not access the results at a later time.
-
-First take a look at the output from `t.test()`
-
-- The output is an object with data placed in different slots. Slots can be accessed in a similar fashion to dataframe columns
-    + the `names()` of the object tells us the variable names of the data we can retrieve
-
-
-```{r}
-testResult <- t.test(as.numeric(exprs[1,]) ~ factor(patients[, "er"]))
-names(testResult)
-testResult$statistic
-```
-
+Note that this `for` loop is helping us identify the number of genes in each chromosome but the
+result is not stored. Thus, we can not access the results at a later time.
 
 - When storing the results from a loop, we often create an empty variable before starting the for loop
 - This is used store the result at each iteration of the loop
 
 ```{r}
-stats <- NULL
-for(i in 1:10) {
-  testResult <- t.test(as.numeric(exprs[i,]) ~ factor(patients[, "er"]))
-  stats[i] <- testResult$statistic
+numGenes <- NULL
+chrom <- c("chr1", "chr5", "chr6", "chr8")
+for(chr in chrom) {
+  numRows <- exprsAnno %>%
+      filter(Chromosome == chr) %>%
+      summarise(n())
+  numGenes[chr] <- numRows
   }
-stats
-
+numGenes
 ```
 
-## Exercise: Practical application
 
-Let's say that we want to do a t-test for each gene on chromosome 8. However the information we need to perform this test is spread across multiple dataframes.
-
-- First we need to identify which probes correspond to genes on chromosome 8 in geneAnnotation
-- Identify the rows in exprs that match the probes of chromosome 8 genes
-- Subset the exprs for the selected rows
+## Exercise
+Identify the number of patients who are positive for ER/PR/HER2 when considering each status
+individually. Store the results in a vector.
 
 ```{r}
-chr8Expression <- exprsAnno %>% filter(Chromosome == "chr8") %>% select(starts_with("NKI"))
-```
-
-- Create a for loop to perform to test if the expression level of each gene on chromosome 8 is significantly different between ER positive and negative samples
-- Store the ***p-value*** from each individual test
-- How many genes have a p-value < 0.05?
-
-```{r}
-### Your Answer Here ###
-```
-
-- Additional ways to use `for` loops
-- `for` loops can also be used with strings
-- This means that we can also use change our filter
-
-# Example: Find the number of patients who are aged above 20, 30, 40
-```{r}
-ages <- c(20, 30, 40)
-for (a in ages){
-    tmp <- patients %>%  filter(age > a) %>% summarise(n())
-    print(tmp)
-}
-
-```
-
-## Exercise 2
-Write a `for` loop to test whether the expression of the gene ESR1 is differentially expression based on:
-    1. ER status
-    2. PR status
-    3. HER2 status
-Print out the p-values of each test
-```{r}
+status <- c("er", "pr", "her2")
 ### Your answer here ###
-```
-
-
-## Super Challenge: Exercise 3
-Write a double/nested `for` loop to test whether the genes ESR1, MAP3K12, MAP3K8, ARID1A and BCL2, are differentailly expressed based on the ER/PR/HER2 status of the patient. How many times is each gene differentially expressed?
-
-Hint: 
-```
-for (i in vector1){
-    .... do something ....
-    for (j in vector2){
-        .... do something ....
-    }
-    
-}
-
-```
-Hint2: To help store the results in a vector, write your own iterator
-```
-Example:
-fruits <- c("apples", "oranges", "pears")
-sentences <- NULL
-i <- 1
-for (f in fruits){
-    s <- paste("I like", f)
-    sentences[i] <- s
-    i <- i + 1
-}
-```
-
-```{r}
-### Your code here
 ```
 
 
@@ -268,6 +258,7 @@ if (condition) {
 - `condition` is any logical value, and can contain multiple conditions. 
     + e.g. `(a == 2 & b < 5)`, this is a compound conditional argument
 - The condition should return a *single* value of `TRUE` or `FALSE`
+
     
 ## Other conditional tests
 
@@ -284,14 +275,27 @@ is.character(10)
 - `is.na()` is useful for seeing if an `NA` value is found
     + cannot use `== NA`!
 
-
 ```{r}
 x <- c(1, 2, NA)
 mean(x)
 is.na(x)
 ```
-- could be used to check if a gene symbol is found in the data before proceeding with statistical test
-    + There are 2 methods that could be used to achieve this
+
+## Exercise
+Run the line of code below.
+```{r}
+x <- rnorm(1, mean = 50, sd = 10)
+```
+This line picks a random number from a "normal" distribution (AKA the bell curve). As it is random
+everyone will get a different answer!!
+
+Write an `if` statement to check if the number generated is *greater than or equal* to 50.
+If so then print: "The number is greater than or equal to 50"
+`else` print: "The number is less than 50""
+
+## Example
+Checking if a gene of interest is in the dataset
+    - There are 2 methods that could be used to achieve this
     1. Make uses of the functions `all()` and `any()`
     2. Make use of the function `sum()`
 ```{r}
@@ -309,146 +313,131 @@ if (sum(exprsAnno$HUGO.gene.symbol == "PIK3CA") == 1){
     print("PIK3CA is not in the dataset")
 }
 ```
-## Exercise 3
-Write an `if else` statement to check if the following genes are in the dataset:
+
+## Exercise
+Write an `if else` statement to check if *all* of the following genes are in the dataset:
 BCL2, HOXA9, MAPK1, ARID1A, GATA3, ESR1
 
-Additional challenge: Fill in the conditions and code to get the following print statements, where "n" is the integer number of genes found in the dataset:
+Hint: Make use of `%in%`
 
-Note: condition2 is a **compound** condition
-```
-if (condition1){
-    print("All the genes are in the dataset")
-}if else (condition2){
-    ...code...
-    print("Only n genes are in the dataset")
-}else{
-    print("None of the genes are in the dataset")
-}
-```
-- `file.exists()`, `dir.exists()` and `dir.create()` are also functions that are useful in `if else` statements
+
+## Other useful conditionals
+`file.exists()`, `dir.exists()` and `dir.create()` are also functions that are useful in `if else` statements.
+Particularly, when writing scripts that take inputs from the commandline.
 
 
 ## Combining Loops and Conditional branching
+Using the **`for`** loop we wrote before, we could add an `if else` branch to identify if the difference
+between the mean expression for a gene differs between the groups ER positive/negative.
 
-- Using the **`for`** loop we wrote before, we could add some code to plot the expression of each gene
-    + a boxplot would be ideal
-- However, we might only want plots for genes with a "significant" pvalue
+We are interested in finding out if the following genes:  
+AMPD3, TECTA, TRPV4, CD244, ABHD10, GEMIN8, MAP1A, SMAD7
+have difference between the ER status of greater than 0.04.
+
 - Here's how we can use an `if` statement to test for this
     + for each iteration of the the loop:
-        1. test if the p-value from the test is below 0.05 or not
-        2. if the p-value is less than 0.05 make a boxplot
-        3. if not, do nothing
-        
+        1. Identify the expression values associated with the gene of interest
+        2. Group the samples based on there ER status, and find the mean for each group
+        3. if the absolute difference is greater than 0.04, print a statement that informs us of this
+        4. else, do nothing
 ```{r}
-pdf("Chromosome8Genes.pdf")
-chr8Genes <- exprsAnno %>% filter(Chromosome == "chr8") %>% select(HUGO.gene.symbol)
-for (gene in chr8Genes$HUGO.gene.symbol){
+genes <- c("AMPD3", "TECTA", "TRPV4", "CD244", "ABHD10", "GEMIN8", "MAP1A", "SMAD7")
+
+for (gen in genes){
     tmp <- exprsAnno %>%
-        filter(HUGO.gene.symbol == gene) %>% 
-        select(starts_with("NKI"))
-    
-    tmp <- data.frame(t(tmp))
-    
+        filter(HUGO.gene.symbol == gen) %>%
+        select(starts_with("NKI")) %>%
+        t() %>%
+        data.frame()
     colnames(tmp) <- "gene"
-    
-    testResult <- t.test(as.numeric(tmp[, "gene"]) ~ factor(patients[, "er"]))$p.value
-    
-    if (testResult < 0.05){
-        g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]),
-                        fill = factor(patients[, "er"]))) +
-            geom_boxplot() +
-            scale_fill_manual(values = c("#E69F00", "#56B4E9"),
-                              name = "Patient ER status",
-                              labels = c("Negative", "Positive")) +
-            labs(title = paste("Boxplot of", gene, "between ER +/- patients"),
-                 subtitle = paste("P-value: ", testResult),
-                 x = "patient status", y = paste(gene, "expression")) + 
-            theme(plot.title = element_text(hjust = 0.5),
-                  plot.subtitle = element_text(hjust = 0.5))
-        print(g)
+    x <- tmp %>% 
+        group_by(factor(patients[, "er"])) %>%
+        summarise("exprsAv" = mean(gene, na.rm = TRUE))
+    diff <- x$exprsAv[1] - x$exprsAv[2]
+    if (abs(diff) > 0.04){
+        print(paste("The difference between ER status for", gen, "is", abs(diff), "which is greater than 0.04"))
+    }else{
+        print(paste("The difference between ER status for", gen, "is not greater than 0.04"))
     }
 }
-dev.off()
 
 ```
 
+Whilst it is slightly informative to know that the difference between means of ER status for each gene.
+It would be more interesting to plot the expression of the genes that have an absolute difference of
+greater than 0.04.
 
-## Example: VAF plots
-What if we are looking at time lapse data?
+Therefore we want to take the same steps as above but change from printing a statement to plotting a graph
+- Here's how we can use an `if` statement to test for this
+    + for each iteration of the the loop:
+        1. Identify the expression values associated with the gene of interest
+        2. Group the samples based on there ER status, and find the mean for each group
+        3. if the absolute difference is greater than 0.04, **produce a boxplot to depict the difference**
+        4. else, do nothing
+        
 ```{r}
-P1Exprs <- read.delim("time_lapse/patient_1.txt")
+genes <- c("AMPD3", "TECTA", "TRPV4", "CD244", "ABHD10", "GEMIN8", "MAP1A", "SMAD7")
 
-P1Exprs %>% 
-    na.omit() %>%
-    select(timepoint, expression, HUGO.gene.symbol) %>% 
-    ggplot(aes(x = timepoint,
-               y = expression,
-               group = factor(HUGO.gene.symbol),
-               colour = factor(HUGO.gene.symbol))) + 
-    geom_line() +
-    labs(title = "Expression level changes in patient 1 over time") +
-    theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
-
-
+for (gen in genes){
+    tmp <- exprsAnno %>%
+        filter(HUGO.gene.symbol == gen) %>%
+        select(starts_with("NKI")) %>%
+        t() %>%
+        data.frame()
+    colnames(tmp) <- "gene"
+    x <- tmp %>% 
+        group_by(factor(patients[, "er"])) %>%
+        summarise("exprsAv" = mean(gene, na.rm = TRUE))
+    diff <- x$exprsAv[1] - x$exprsAv[2]
+    if (abs(diff) > 0.04){
+        g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+            geom_boxplot()
+        print(g)
+    }else{
+        next
+    }
+}
 ```
 
+## Exercise
+Add additional layers to the above plot so that the labels are more informative.
+See plot below, replace "x" in the labs for the gene that we are investigating:  
+Also, change the colours associated with each ER status.
 
-
-## Exercise : VAF plots per chromosome
-Using the data for patient_1 in the timelapse folder. Create a line graph of the expression level changes for the genes on each chromosome, and export the graphs into a pdf file named: "Time_Lapse_Expression_changes.pdf". Where each page of the pdf looks like the plot below.
-
-Note: The title of the graph on each page should be changed to reflect the chromosome expression levels that are shown.
-Hint: Make use of the function `unique()`
-
-
-```{r, echo=FALSE}
-P1Exprs %>% 
-    na.omit() %>%
-    filter(Chromosome == "chr8") %>%
-    select(timepoint, expression, HUGO.gene.symbol) %>% 
-    ggplot(aes(x = timepoint,
-               y = expression,
-               group = factor(HUGO.gene.symbol),
-               colour = factor(HUGO.gene.symbol))) + 
-    geom_line() +
-    labs(title = paste("Expression level changes in chr8 over time"), colour = "Genes") +
-    theme(plot.title = element_text(hjust = 0.5))
-```
-
-Additional Challenge: Include an `if else` branch, so that the plot is only generated if there are more than 30 genes on the chromosome
+![](Final_boxplot.png)
 
 ##Code formatting avoids bugs!
 Compare:
 ```{r eval=FALSE}
-f<-26
-while(f!=0){
-print(letters[f])
-f<-f-1}
+for (a in ages){
+numRows <- patients %>%
+filter(age > a) %>%
+summarise(n())
+if(numRows < 10){
+s <- paste("There are fewer than 10 patients younger than", a)
+print(s)
+}else{
+s <- paste("There are more than 10 patients younger than", a)
+print(s)
+}
+}
 ```
 to:
 ```{r eval=FALSE}
-f <- 26
-while(f != 0 ){
-  print(letters[f])
-  f <- f-1
-  }
+for (a in ages) {
+    numRows <- patients %>%
+        filter(age > a) %>%
+        summarise(n())
+    if (numRows < 10) {
+        s <- paste("There are fewer than 10 patients younger than", a)
+        print(s)
+    } else{
+        s <- paste("There are more than 10 patients younger than", a)
+        print(s)
+    }
+}
 ```
 - The code between brackets `{}` *always* is *indented*, this clearly separates what is executed once, and what is run multiple times
 - Trailing bracket `}` always alone on the line at the same indentation level as the initial bracket `{`
 - Use white spaces to divide the horizontal space between units of your code, e.g. around assignments, comparisons
-
-
-## Writing Functions
-# Motivation
-Though R has many inbuilt functions, sometimes we will need to perform a calculation or a set number of steps at multiple steps throughout a script.
-
-Things to consider when writng a function:
-1. What are in the inputs, and what are the outputs
-    - Note: There can only be ONE output
-2. What are sequential steps required from the input to the output
-3. Which steps need to be "flexible"
-    - Consider what aspects of your code are constant vs. the aspects that could change with different inputs
-    - The aspects that can change are the typically included as an input to your function
-
 
