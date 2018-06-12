@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Solving Biological Problems Using R - Day 2"
-author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojni�,
+author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojni?,
   Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts (original material https://github.com/cambiotraining/r-intro).
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
@@ -31,7 +31,7 @@ However, consider the scenario where you have a script of several hundred lines 
 dataset.
 
 Whilst you could copy that script and adjust the variables for each patient/dataset. However,
-this method of copying, pasting and adjusting can be:
+this method of copying, pasting and editting can be:
     1. Tedious
     2. Erroreous
     
@@ -51,6 +51,92 @@ exprsAnno %>%
     filter(Chromosome == "chr1") %>% 
     summarise(n())
 ```
+
+## Copy/Paste/Edit example 2
+Whilst the first example only contains 3 lines of code, and therefore is less likely to lead to errors
+imagine that you want to create multiple boxplots.
+
+For example below is the code to create histograms for the expression values of the following genes
+    - FOXE1  
+    - TECTA  
+    - BAX  
+    - MAP3K8  
+    - GEMIN8
+```{r}
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "FOXE1") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "FOXE1"
+g <- ggplot(tmp, aes(y = FOXE1, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of FOXE1 ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of FOXE1") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+```
+
+or
+```
+exprsAnno %>% 
+    filter(Chromosome == "chr8") %>%
+    select("NKI_7") %>% 
+    ggplot(aes(x = NKI_7, fill = as.factor("NKI_7"))) +
+    geom_histogram() +
+    scale_fill_manual(values = "goldenrod", guide = "none") +
+    labs(title = "Expression of chr8 for patient NKI_7",
+         y = "Count",
+         x = "Expression values")
+```
+```{r, eval=FALSE}
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "TECTA") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "TECTA"
+g <- ggplot(tmp, aes(y = TECTA, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of TECTA ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of TECTA") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+tmp <- exprsAnno %>% 
+    filter(HUGO.gene.symbol == "BAX") %>% 
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "BAX"
+g <- ggplot(tmp, aes(y = BAX, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+    geom_boxplot() + 
+    scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of BAX ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of BAX") +
+    scale_x_discrete(labels = NULL) + 
+    theme(plot.title = element_text(hjust = 0.5))
+print(g)
+
+# ETC....
+```
+
+As you can imagine the more lines of code that need to be copied/pasted and editted the more likely
+it is that errors will arise.
 
 ## Loops: Commands and flow control
 - Many programming languages have ways of doing the same thing many times, perhaps changing some variable each time. This is called **looping**
@@ -84,7 +170,8 @@ for (chr in chrom){
     numRows <- exprsAnno %>%
         filter(Chromosome == chr) %>%
         summarise(n())
-    print(numRows)
+    s <- paste("The number of genes on", chr, "is", numRows)
+    print(s)
 }
 
 ```
@@ -118,9 +205,25 @@ for (a in ages){
     numRows <- patients %>%
         filter(age > a) %>%
         summarise(n())
-    print(numRows)
+    s <- paste("The number of patients aged over", a, "is", numRows, sep = " ")
+    print(s)
 }
 ```
+
+## Exercise
+Convert the code used to generate the boxplots in the second example of copy/paste/edit
+into a `for` loop
+
+Which variables are you looping over?
+
+Hint: Consider using the function `paste()` to help change the y-axis label and title to reflect the
+gene that is being plotted
+
+# Saving multiple plots
+You can save all the plots produced by a `for` loop by using the `pdf()` function *outside* the `for`loop.
+This will create one file with all the plots.
+
+Otherwise, another option is to create a png/jpeg file for each graph *inside* the `for` loop.
 
 ## Storing results
 
@@ -158,9 +261,11 @@ for (stat in status){
     numRows <- patients %>%
         select(stat) %>%
         filter(. == 1) %>% 
-        summarise()
+        summarise(n())
     print(numRows)
 }
+
+
 ```
 
 
@@ -180,6 +285,7 @@ if (condition) {
 - `condition` is any logical value, and can contain multiple conditions. 
     + e.g. `(a == 2 & b < 5)`, this is a compound conditional argument
 - The condition should return a *single* value of `TRUE` or `FALSE`
+
     
 ## Other conditional tests
 
@@ -196,14 +302,27 @@ is.character(10)
 - `is.na()` is useful for seeing if an `NA` value is found
     + cannot use `== NA`!
 
-
 ```{r}
 x <- c(1, 2, NA)
 mean(x)
 is.na(x)
 ```
-- could be used to check if a gene symbol is found in the data before proceeding with statistical test
-    + There are 2 methods that could be used to achieve this
+
+## Exercise
+Run the line of code below.
+```{r}
+x <- rnorm(1, mean = 50, sd = 10)
+```
+This line picks a random number from a "normal" distribution (AKA the bell curve). As it is random
+everyone will get a different answer!!
+
+Write an `if` statement to check if the number generated is *greater than or equal* to 50.
+If so then print: "The number is greater than or equal to 50"
+`else` print: "The number is less than 50""
+
+## Example
+Checking if a gene of interest is in the dataset
+    - There are 2 methods that could be used to achieve this
     1. Make uses of the functions `all()` and `any()`
     2. Make use of the function `sum()`
 ```{r}
@@ -221,146 +340,159 @@ if (sum(exprsAnno$HUGO.gene.symbol == "PIK3CA") == 1){
     print("PIK3CA is not in the dataset")
 }
 ```
-## Exercise 3
-Write an `if else` statement to check if the following genes are in the dataset:
+
+## Exercise
+Write an `if else` statement to check if *all* of the following genes are in the dataset:
 BCL2, HOXA9, MAPK1, ARID1A, GATA3, ESR1
 
-Additional challenge: Fill in the conditions and code to get the following print statements, where "n" is the integer number of genes found in the dataset:
+Hint: Make use of `%in%`
 
-Note: condition2 is a **compound** condition
-```
-if (condition1){
-    print("All the genes are in the dataset")
-}if else (condition2){
-    ...code...
-    print("Only n genes are in the dataset")
-}else{
-    print("None of the genes are in the dataset")
-}
-```
-- `file.exists()`, `dir.exists()` and `dir.create()` are also functions that are useful in `if else` statements
+
+## Other useful conditionals
+`file.exists()`, `dir.exists()` and `dir.create()` are also functions that are useful in `if else` statements.
+Particularly, when writing scripts that take inputs from the commandline.
 
 
 ## Combining Loops and Conditional branching
+Using the **`for`** loop we wrote before, we could add an `if else` branch to identify if the difference
+between the mean expression for a gene differs between the groups ER positive/negative.
 
-- Using the **`for`** loop we wrote before, we could add some code to plot the expression of each gene
-    + a boxplot would be ideal
-- However, we might only want plots for genes with a "significant" pvalue
+We are interested in finding out if the following genes:  
+AMPD3, TECTA, TRPV4, CD244, ABHD10, GEMIN8, MAP1A, SMAD7
+have difference between the ER status of greater than 0.04.
+
 - Here's how we can use an `if` statement to test for this
     + for each iteration of the the loop:
-        1. test if the p-value from the test is below 0.05 or not
-        2. if the p-value is less than 0.05 make a boxplot
-        3. if not, do nothing
-        
+        1. Identify the expression values associated with the gene of interest
+        2. Group the samples based on there ER status, and find the mean for each group
+        3. if the absolute difference is greater than 0.04, print a statement that informs us of this
+        4. else, do nothing
 ```{r}
-pdf("Chromosome8Genes.pdf")
-chr8Genes <- exprsAnno %>% filter(Chromosome == "chr8") %>% select(HUGO.gene.symbol)
-for (gene in chr8Genes$HUGO.gene.symbol){
+genes <- c("AMPD3", "TECTA", "TRPV4", "CD244", "ABHD10", "GEMIN8", "MAP1A", "SMAD7")
+
+for (gen in genes){
     tmp <- exprsAnno %>%
-        filter(HUGO.gene.symbol == gene) %>% 
-        select(starts_with("NKI"))
-    
-    tmp <- data.frame(t(tmp))
-    
+        filter(HUGO.gene.symbol == gen) %>%
+        select(starts_with("NKI")) %>%
+        t() %>%
+        data.frame()
     colnames(tmp) <- "gene"
-    
-    testResult <- t.test(as.numeric(tmp[, "gene"]) ~ factor(patients[, "er"]))$p.value
-    
-    if (testResult < 0.05){
-        g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]),
-                        fill = factor(patients[, "er"]))) +
-            geom_boxplot() +
-            scale_fill_manual(values = c("#E69F00", "#56B4E9"),
-                              name = "Patient ER status",
-                              labels = c("Negative", "Positive")) +
-            labs(title = paste("Boxplot of", gene, "between ER +/- patients"),
-                 subtitle = paste("P-value: ", testResult),
-                 x = "patient status", y = paste(gene, "expression")) + 
-            theme(plot.title = element_text(hjust = 0.5),
-                  plot.subtitle = element_text(hjust = 0.5))
-        print(g)
+    x <- tmp %>% 
+        group_by(factor(patients[, "er"])) %>%
+        summarise("exprsAv" = mean(gene, na.rm = TRUE))
+    diff <- x$exprsAv[1] - x$exprsAv[2]
+    if (abs(diff) > 0.04){
+        print(paste("The difference between ER status for", gen, "is", abs(diff), "which is greater than 0.04"))
+    }else{
+        print(paste("The difference between ER status for", gen, "is not greater than 0.04"))
     }
 }
-dev.off()
 
 ```
 
+Whilst it is slightly informative to know that the difference between means of ER status for each gene.
+It would be more interesting to plot the expression of the genes that have an absolute difference of
+greater than 0.04.
 
-## Example: VAF plots
-What if we are looking at time lapse data?
+Therefore we want to take the same steps as above but change from printing a statement to plotting a graph
+- Here's how we can use an `if` statement to test for this
+    + for each iteration of the the loop:
+        1. Identify the expression values associated with the gene of interest
+        2. Group the samples based on there ER status, and find the mean for each group
+        3. if the absolute difference is greater than 0.04, **produce a boxplot to depict the difference**
+        4. else, do nothing
+        
 ```{r}
-P1Exprs <- read.delim("time_lapse/patient_1.txt")
+genes <- c("AMPD3", "TECTA", "TRPV4", "CD244", "ABHD10", "GEMIN8", "MAP1A", "SMAD7")
 
-P1Exprs %>% 
-    na.omit() %>%
-    select(timepoint, expression, HUGO.gene.symbol) %>% 
-    ggplot(aes(x = timepoint,
-               y = expression,
-               group = factor(HUGO.gene.symbol),
-               colour = factor(HUGO.gene.symbol))) + 
-    geom_line() +
-    labs(title = "Expression level changes in patient 1 over time") +
-    theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
-
-
+for (gen in genes){
+    tmp <- exprsAnno %>%
+        filter(HUGO.gene.symbol == gen) %>%
+        select(starts_with("NKI")) %>%
+        t() %>%
+        data.frame()
+    colnames(tmp) <- "gene"
+    x <- tmp %>% 
+        group_by(factor(patients[, "er"])) %>%
+        summarise("exprsAv" = mean(gene, na.rm = TRUE))
+    diff <- x$exprsAv[1] - x$exprsAv[2]
+    if (abs(diff) > 0.04){
+        g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+            geom_boxplot()
+        print(g)
+    }else{
+        next
+    }
+}
 ```
 
+## Exercise
+Add additional layers to the above plot so that the labels are more informative.
+See plot below, replace "x" in the labs for the gene that we are investigating:  
+Also, change the colours associated with each ER status.
 
-
-## Exercise : VAF plots per chromosome
-Using the data for patient_1 in the timelapse folder. Create a line graph of the expression level changes for the genes on each chromosome, and export the graphs into a pdf file named: "Time_Lapse_Expression_changes.pdf". Where each page of the pdf looks like the plot below.
-
-Note: The title of the graph on each page should be changed to reflect the chromosome expression levels that are shown.
-Hint: Make use of the function `unique()`
-
-
-```{r,echo=FALSE}
-P1Exprs %>% 
-    na.omit() %>%
-    filter(Chromosome == "chr8") %>%
-    select(timepoint, expression, HUGO.gene.symbol) %>% 
-    ggplot(aes(x = timepoint,
-               y = expression,
-               group = factor(HUGO.gene.symbol),
-               colour = factor(HUGO.gene.symbol))) + 
-    geom_line() +
-    labs(title = paste("Expression level changes in chr8 over time"), colour = "Genes") +
+```{r, echo=FALSE}
+gen <- genes[1]
+tmp <- exprsAnno %>%
+    filter(HUGO.gene.symbol == gen) %>%
+    select(starts_with("NKI")) %>%
+    t() %>%
+    data.frame()
+colnames(tmp) <- "gene"
+x <- tmp %>% 
+    group_by(factor(patients[, "er"])) %>%
+    summarise("exprsAv" = mean(gene, na.rm = TRUE))
+diff <- x$exprsAv[1] - x$exprsAv[2]
+if (abs(diff) > 0.04){
+    g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
+        geom_boxplot() +
+        scale_fill_manual(values = c("goldenrod", "dodgerblue"),
+                      name = "ER status",
+                      labels = c("ER -ve", "ER +ve")) +
+    labs(title = "Expression of x ~ Estrogen Receptor Status",
+         x = "Estrogen Receptor Status",
+         y = "Expression values of x") +
+    scale_x_discrete(labels = NULL) + 
     theme(plot.title = element_text(hjust = 0.5))
+    print(g)
+        
+    }else{
+        next
+}
 ```
-
-Additional Challenge: Include an `if else` branch, so that the plot is only generated if there are more than 30 genes on the chromosome
 
 ##Code formatting avoids bugs!
 Compare:
 ```{r eval=FALSE}
-f<-26
-while(f!=0){
-print(letters[f])
-f<-f-1}
+for (a in ages){
+numRows <- patients %>%
+filter(age > a) %>%
+summarise(n())
+if(numRows < 10){
+s <- paste("There are fewer than 10 patients younger than", a)
+print(s)
+}else{
+s <- paste("There are more than 10 patients younger than", a)
+print(s)
+}
+}
 ```
 to:
 ```{r eval=FALSE}
-f <- 26
-while(f != 0 ){
-  print(letters[f])
-  f <- f-1
-  }
+for (a in ages) {
+    numRows <- patients %>%
+        filter(age > a) %>%
+        summarise(n())
+    if (numRows < 10) {
+        s <- paste("There are fewer than 10 patients younger than", a)
+        print(s)
+    } else{
+        s <- paste("There are more than 10 patients younger than", a)
+        print(s)
+    }
+}
 ```
 - The code between brackets `{}` *always* is *indented*, this clearly separates what is executed once, and what is run multiple times
 - Trailing bracket `}` always alone on the line at the same indentation level as the initial bracket `{`
 - Use white spaces to divide the horizontal space between units of your code, e.g. around assignments, comparisons
-
-
-## Writing Functions
-# Motivation
-Though R has many inbuilt functions, sometimes we will need to perform a calculation or a set number of steps at multiple steps throughout a script.
-
-Things to consider when writng a function:
-1. What are in the inputs, and what are the outputs
-    - Note: There can only be ONE output
-2. What are sequential steps required from the input to the output
-3. Which steps need to be "flexible"
-    - Consider what aspects of your code are constant vs. the aspects that could change with different inputs
-    - The aspects that can change are the typically included as an input to your function
-
 
