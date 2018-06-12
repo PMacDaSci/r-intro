@@ -46,11 +46,6 @@ exprsAnno <- read.delim("anno.gene.expression.txt", stringsAsFactors = FALSE)
 ### Insert your code here ###
 ```
 
-```{r, eval=FALSE, echo=FALSE, include=FALSE}
-exprsAnno %>%
-    filter(Chromosome == "chr1") %>% 
-    summarise(n())
-```
 
 ## Copy/Paste/Edit example 2
 Whilst the first example only contains 3 lines of code, and therefore is less likely to lead to errors
@@ -200,15 +195,6 @@ Find the number of patients who are aged above 20, 30, 40, and print the answer 
 ages <- c(20, 30, 40)
 ### Insert your code here ###
 ```
-```{r, eval=FALSE, echo=FALSE, include=FALSE}
-for (a in ages){
-    numRows <- patients %>%
-        filter(age > a) %>%
-        summarise(n())
-    s <- paste("The number of patients aged over", a, "is", numRows, sep = " ")
-    print(s)
-}
-```
 
 ## Exercise
 Convert the code used to generate the boxplots in the second example of copy/paste/edit
@@ -240,7 +226,7 @@ for(chr in chrom) {
   numRows <- exprsAnno %>%
       filter(Chromosome == chr) %>%
       summarise(n())
-  numGenes[i] <- numRows
+  numGenes[chr] <- numRows
   }
 numGenes
 ```
@@ -253,19 +239,6 @@ individually. Store the results in a vector.
 ```{r}
 status <- c("er", "pr", "her2")
 ### Your answer here ###
-```
-```{r, eval=FALSE, echo=FALSE, include=FALSE}
-status <- c("er", "pr", "her2")
-
-for (stat in status){
-    numRows <- patients %>%
-        select(stat) %>%
-        filter(. == 1) %>% 
-        summarise(n())
-    print(numRows)
-}
-
-
 ```
 
 
@@ -431,35 +404,7 @@ Add additional layers to the above plot so that the labels are more informative.
 See plot below, replace "x" in the labs for the gene that we are investigating:  
 Also, change the colours associated with each ER status.
 
-```{r, echo=FALSE, include=FALSE}
-gen <- genes[1]
-tmp <- exprsAnno %>%
-    filter(HUGO.gene.symbol == gen) %>%
-    select(starts_with("NKI")) %>%
-    t() %>%
-    data.frame()
-colnames(tmp) <- "gene"
-x <- tmp %>% 
-    group_by(factor(patients[, "er"])) %>%
-    summarise("exprsAv" = mean(gene, na.rm = TRUE))
-diff <- x$exprsAv[1] - x$exprsAv[2]
-if (abs(diff) > 0.04){
-    g <- ggplot(tmp, aes(y = gene, x = factor(patients[, "er"]), fill = factor(patients[, "er"]))) +
-        geom_boxplot() +
-        scale_fill_manual(values = c("goldenrod", "dodgerblue"),
-                      name = "ER status",
-                      labels = c("ER -ve", "ER +ve")) +
-    labs(title = "Expression of x ~ Estrogen Receptor Status",
-         x = "Estrogen Receptor Status",
-         y = "Expression values of x") +
-    scale_x_discrete(labels = NULL) + 
-    theme(plot.title = element_text(hjust = 0.5))
-    print(g)
-        
-    }else{
-        next
-}
-```
+![](Final_boxplot.png)
 
 ##Code formatting avoids bugs!
 Compare:
