@@ -46,7 +46,7 @@ exprsAnno <- read.delim("anno.gene.expression.txt", stringsAsFactors = FALSE)
 ### Insert your code here ###
 ```
 
-```{r, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE, include=FALSE}
 exprsAnno %>%
     filter(Chromosome == "chr1") %>% 
     summarise(n())
@@ -200,7 +200,7 @@ Find the number of patients who are aged above 20, 30, 40, and print the answer 
 ages <- c(20, 30, 40)
 ### Insert your code here ###
 ```
-```{r, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE, include=FALSE}
 for (a in ages){
     numRows <- patients %>%
         filter(age > a) %>%
@@ -254,7 +254,7 @@ individually. Store the results in a vector.
 status <- c("er", "pr", "her2")
 ### Your answer here ###
 ```
-```{r, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=FALSE, include=FALSE}
 status <- c("er", "pr", "her2")
 
 for (stat in status){
@@ -431,7 +431,7 @@ Add additional layers to the above plot so that the labels are more informative.
 See plot below, replace "x" in the labs for the gene that we are investigating:  
 Also, change the colours associated with each ER status.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, include=FALSE}
 gen <- genes[1]
 tmp <- exprsAnno %>%
     filter(HUGO.gene.symbol == gen) %>%
