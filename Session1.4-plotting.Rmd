@@ -119,6 +119,12 @@ boxplot(patients$Weight ~ patients$Sex)
 
 ```
 
+- We can include multiple factors
+
+```{r}
+boxplot(patients$Weight ~ patients$Smokes + patients$Sex)
+```
+
 - Other alternatives to consider:
     - `example(dotchart)`
     - `example(stripchart)`
@@ -268,6 +274,18 @@ plot(patients$Age, patients$Weight,
      col = c("red","blue"))
 ```
 
+We can use factors to determine which points to color
+
+```{r}
+
+plot(patients$Age, patients$Weight,col = patients$Sex)
+
+palette(c("firebrick1","dodgerblue"))
+plot(patients$Age, patients$Weight,col = patients$Sex)
+
+```
+
+
 ##Other plots use the same arguments
 
 - Other plotting functions use the same arguments as `plot()`
@@ -279,6 +297,11 @@ boxplot(patients$Weight~patients$Sex,
         ylab = "Weight",
         main = "Relationship between Weight and Gender",
         col  = c("blue","yellow"))
+```
+
+## We can change color, and size according to data
+```{r}
+plot(patients$Age, patients$Weight, col = patients$Sex, cex=patients$Age/10,pch=18)
 ```
 
 
