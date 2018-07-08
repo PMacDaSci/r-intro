@@ -4,6 +4,7 @@ This course provides an introduction to the R programming language and software 
 ![R workshop](images/rintro.jpg)
 
 ## Topics Covered
+
 ### Week 1
 - R environment
 - Informal introduction to R basics
@@ -24,6 +25,19 @@ This course provides an introduction to the R programming language and software 
 - Functions as procedures
 - Functions with arguments
 
+## Course Materials
+
+### Week 1
+- [Introduction](https://rawgit.com/pmacdasci/r-intro/master/Session1.1-intro.nb.html)
+- [Data Structures](https://rawgit.com/pmacdasci/r-intro/master/Session1.2-data-structures.nb.html)
+
+### Week 2
+- [Analysis Walkthrough]
+- [Introduction to Plotting]
+
+### Week 3
+
+### Week 4
 
 ## Acknowledgements
 This course is based on the R course run regularly at the University of Cambridge through the Bioinformatics Training Facility:
