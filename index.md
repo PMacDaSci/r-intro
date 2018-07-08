@@ -8,26 +8,24 @@ This course provides an introduction to the R programming language and software 
 - Introducing R data objects
 - Understanding data types
 - Manipulating data in R
-- Basic build-in function for data manipulation
-- Loops and branching as useful data handling technique
-- A guide to using R for everyday data analysis
-- Reading and writing data tables
-- Data manipulation
-- Starting out with statistical tests
 
 ###Day 2
-- Data analysis and R automation with examples
-- Data analysis 'Stepwise'. Interactive R scripting
-- Structuring an R progam'
-- Functions as procedures
-- Functions with arguments
-- Advanced data analysis and integration
+- Basic built-in functions for data manipulation
+- Reading and writing data tables
 - Basic R graphics
-- High level plotting functions
+
+###Day 3
+- Using the dplyr package for data manipulation
+- Using the ggplot package for plotting
 - Customized plotting functions
 
+###Day 4
+- Data analysis and R automation with examples
+- Functions as procedures
+- Functions with arguments
+
 ##How to Book
-This course is run regularly at the University of Cambridge through the Bioinformatics Training Facility. Scheduled course dates and booking information can be found at the following link:
+This course is based on the R course run regularly at the University of Cambridge through the Bioinformatics Training Facility. Scheduled course dates and booking information can be found at the following link:
 
 [http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro](http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro)
 
@@ -35,4 +33,3 @@ This course is run regularly at the University of Cambridge through the Bioinfor
 
 + [The R Project for Statistical Computing](http://www.r-project.org/)
 + [Bioconductor](http://www.bioconductor.org/)
-+ [Bioinformatics Training at Cambridge](http://training.csx.cam.ac.uk/bioinformatics/event-timetable)
