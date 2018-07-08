@@ -1,13 +1,13 @@
 ---
-title: "Introduction to Solving Biological Problems Using R - Day 1"
-author: Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
-  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts
+title: "Introduction to Solving Biological Problems Using R - Week 1"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   html_notebook:
     toc: yes
     toc_float: yes
 ---
+*Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
+  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts*
 
 # 2. Data structures
 
