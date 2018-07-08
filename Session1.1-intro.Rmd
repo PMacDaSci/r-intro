@@ -1,7 +1,5 @@
 ---
-title: "Introduction to Solving Biological Problems Using R - Day 1"
-author: PMacDaSci's modified version of material by Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojnić,
-  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts (original material https://github.com/cambiotraining/r-intro) and Software Carpentry.
+title: "Introduction to Solving Biological Problems Using R - Week 1"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   html_notebook:
@@ -14,7 +12,8 @@ library(knitr)
 opts_chunk$set(comment = NA,eval=FALSE) # eliminates hashtag from R outputs
 ```
 
-
+*PeterMac Data Science's modified version of material by the University of Cambridge (Mark Dunning, Suraj Menon and Aiora Zabala, Robert Stojnić,
+  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts, original material: http://cambiotraining.github.io/r-intro) and Software Carpentry.*
 
 # Course Aims
 
