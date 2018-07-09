@@ -33,13 +33,13 @@ A dataset is *__tidy__* if:
   1. Each variable is in its own column,  
   2. Each individual observation is in its own row and,  
   3. Each value is in its own cell.
-<center><img src="http://garrettgman.github.io/images/tidy-4.png"></center>
+<img src="http://garrettgman.github.io/images/tidy-4.png">
 
 Further reading see:["Tidy Data, by Hadley Wickham"](http://www.jstatsoft.org/v59/i10/)  
 <br>
 __Data Science Lifecycle__: 'Data Science' is an iterative process composed of many steps, we only consider two parts of that process in this workshop.
 
-<center><img src="https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science.png"></center>
+<img src="https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science.png"></center>
 
 Further reading see:["R for Data Science, by Garrett Grolemund & Hadley Wickham"](http://github.com/hadley/r4ds)
 
