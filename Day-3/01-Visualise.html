@@ -9,7 +9,6 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="James Morgan, Lucy Liu" />
 
 
 <title>Workshop 3.1: Visualise with ggplot2</title>
@@ -122,30 +121,27 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Workshop 3.1: Visualise with ggplot2</h1>
-<h4 class="author"><em>James Morgan, Lucy Liu</em></h4>
-<h4 class="date"><em>Last modified: 09 Jul 2018</em></h4>
 
 </div>
 
 
-<div id="install-the-packages" class="section level2">
-<h2>Install the packages</h2>
-<p>Option 1: Install the entire tidyverse<br />
-This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.</p>
+<div id="package-installation" class="section level2">
+<h2>Package Installation</h2>
+<p><strong>Option 1</strong>: Install the entire tidyverse</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>Option 2: Install ggplot2 only</p>
+<p>This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.</p>
+<p><strong>Option 2</strong>: Install ggplot2 <em>only</em></p>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 </div>
-<div id="load-the-packages" class="section level2">
-<h2>Load the packages</h2>
+<div id="package-loading" class="section level2">
+<h2>Package Loading</h2>
 <p>Packages are an extension on the capabilities of Base R. A package may be installed, but it can only be used after explicitly loading it into our envirionment.</p>
 <pre class="r"><code>library(ggplot2)</code></pre>
 </div>
 <div id="check-your-data" class="section level2">
 <h2>Check your Data</h2>
-<p>For this session, we’ll be using a built in dataset: “Miles per gallon”</p>
-<p>Before we start to visualise our data, it’s always a good idea to make sure it looks basically right.</p>
-<p>Take a look at the data</p>
+<p>For this session, we’ll be using a dataset that’s provided with ggplot2: “mpg”</p>
+<p>Before we start to visualise our data, you should always know a little bit about it. So let’s take a look!.</p>
 <pre class="r"><code>#View(mpg)
 mpg</code></pre>
 <pre><code>## # A tibble: 234 x 11
@@ -162,7 +158,7 @@ mpg</code></pre>
 ##  9 audi         a4 quat~   1.8  1999     4 auto(l~ 4        16    25 p    
 ## 10 audi         a4 quat~   2    2008     4 manual~ 4        20    28 p    
 ## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
-<p>Check the structure of the data frame.</p>
+<p>Check the data structure.</p>
 <pre class="r"><code>str(mpg)</code></pre>
 <pre><code>## Classes 'tbl_df', 'tbl' and 'data.frame':    234 obs. of  11 variables:
 ##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
@@ -199,13 +195,16 @@ mpg</code></pre>
 ##  Mean   :23.44                                        
 ##  3rd Qu.:27.00                                        
 ##  Max.   :44.00</code></pre>
-<p>Note that this only works because this dataset is built in.</p>
+<p>Check the documentation…</p>
 <pre class="r"><code>?mpg</code></pre>
+<p>Note that this one only works because this dataset is built in and documented by the package maintainers.</p>
 <div id="quiz-1" class="section level3">
 <h3>Quiz 1</h3>
+<p>Now we know a little bit about the data…</p>
 <p>Take a minute to discuss with the person next to you:<br />
-What relationship do you expect to see between displ (engine volume) and hwy (fuel efficiency on the highway)?</p>
-<p>Put up a green sticky note when you’re ready!</p>
+What relationship do you expect to see between displ (engine volume (L)) and hwy (fuel efficiency on the highway)?</p>
+<p>Put up a green sticky note when you’re ready!)</p>
+<hr />
 </div>
 </div>
 <div id="the-grammar-of-graphics" class="section level2">

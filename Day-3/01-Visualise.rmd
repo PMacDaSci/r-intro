@@ -1,29 +1,27 @@
 ---
 title: 'Workshop 3.1: Visualise with ggplot2'
-author: "James Morgan, Lucy Liu"
-date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Install the packages
+## Package Installation
 
-Option 1: Install the entire tidyverse  
-This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.
+__Option 1__: Install the entire tidyverse  
 
 ```{r Install the tidyverse, eval=FALSE}
 install.packages("tidyverse")
 ```
+This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.  
 
-Option 2: Install ggplot2 only
+
+__Option 2__: Install ggplot2 _only_
 ```{r Install ggplot2, eval=FALSE}
 install.packages("ggplot2")
 ```
 
-## Load the packages
+## Package Loading
 
 Packages are an extension on the capabilities of Base R. A package may be installed, but it can only be used after explicitly loading it into our envirionment.  
 ```{r Load ggplot2, eval=FALSE}
@@ -31,17 +29,17 @@ library(ggplot2)
 ```
 
 ## Check your Data
-For this session, we'll be using a built in dataset: "Miles per gallon"
+For this session, we'll be using a dataset that's provided with ggplot2: "mpg"
 
-Before we start to visualise our data, it's always a good idea to make sure it looks basically right.
+Before we start to visualise our data, you should always know a little bit about it. So let's take a look!.
 
-Take a look at the data
+
 ```{r Check that data}
 #View(mpg)
 mpg
 ```
 
-Check the structure of the data frame.
+Check the data structure.
 ```{r Check that data 2}
 str(mpg)
 ```
@@ -51,10 +49,11 @@ Generate a summary of the data inside the data frame.
 summary(mpg)
 ```
 
-Note that this only works because this dataset is built in.
+Check the documentation...
 ```{r Check that data 4}
 ?mpg
 ```
+Note that this one only works because this dataset is built in and documented by the package maintainers.
 
 ### Quiz 1
 Now we know a little bit about the data...
@@ -62,7 +61,9 @@ Now we know a little bit about the data...
 Take a minute to discuss with the person next to you:  
 What relationship do you expect to see between displ (engine volume (L)) and hwy (fuel efficiency on the highway)?
 
-Put up a green sticky note when you're ready!
+Put up a green sticky note when you're ready!)
+
+----------------------------------------------------------------------------------------------------------------------
 
 ## The Grammar of Graphics
 The "grammar of graphics" works by introducing consecutive layers of content onto a plot.
