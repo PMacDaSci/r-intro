@@ -57,9 +57,10 @@ Note that this only works because this dataset is built in.
 ```
 
 ### Quiz 1
+Now we know a little bit about the data...
 
 Take a minute to discuss with the person next to you:  
-What relationship do you expect to see between displ (engine volume) and hwy (fuel efficiency on the highway)?
+What relationship do you expect to see between displ (engine volume (L)) and hwy (fuel efficiency on the highway)?
 
 Put up a green sticky note when you're ready!
 
