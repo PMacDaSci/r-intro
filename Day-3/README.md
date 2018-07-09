@@ -1,7 +1,7 @@
 ---
 title: 'Workshop 3 - Transform & Visualise'
 author: "James Morgan, Lucy Liu"
-date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+date: "Created: 09 Jul 2018, Last Modified: 09 Jul 2018"
 output: html_document
 ---
 
@@ -64,7 +64,3 @@ You can start back where you leave off by opening the "r-intro.Rproj" file
 ## Acknowledgements
 
 The course material for this workshop has been adapted both from the University of Cambridge [Bioinformatics Training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate), and Hadley Wickham's one-day workshop: ["Exploring the Tidyverse"](https://github.com/hadley/data-science-in-tidyverse).
-
-## License
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
