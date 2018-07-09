@@ -1,0 +1,50 @@
+---
+title: 'Workshop 3.1: Visualise with ggplot2'
+author: "James Morgan, Lucy Liu"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Install the packages
+
+Option 1: Install the entire tidyverse  
+This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.
+
+```{r Install the tidyverse, eval=FALSE}
+install.packages("tidyverse")
+```
+
+Option 2: Install ggplot2 only
+```{r Install ggplot2, eval=FALSE}
+install.packages("ggplot2")
+```
+
+## Load the packages
+
+Packages are an extension on the capabilities of Base R. A package may be installed, but it can only be used after explicitly loading it into our envirionment.  
+```{r Load ggplot2, eval=FALSE}
+library(ggplot2)
+```
+
+## Visualise!
+For this session, we'll be using a built in dataset: "Miles per gallon"
+
+Before we 
+```{r Check that data}
+mpg
+```
+
+```{r Your turn #1}
+ggplot(data=mpg) +
+    geom_point(mapping=aes(x=displ,y=hwy)) +
+    geom_smooth(mapping=aes(x=displ,y=hwy), method = 'lm')
+```
+
+```{r}
+
+```
+

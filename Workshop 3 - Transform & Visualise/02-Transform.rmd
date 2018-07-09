@@ -1,0 +1,47 @@
+---
+title: 'Workshop 3.2: Transform data with dplyr'
+author: "James Morgan, Lucy Liu"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Install the packages
+
+Option 1: Install the entire tidyverse  
+
+```{r Install Tidyverse}
+install.packages("tidyverse")
+```
+
+Option 2: Install dplyr only.  
+Only worry about this if you didn't install the tidyverse in the last session.
+```{r Install ggplot2}
+install.packages("dplyr")
+```
+
+## Import the data
+
+```{r}
+patients <- read.csv(file = "patient-data-cleaned.txt", sep = "\t")
+#patients <- read_tsv("patient-data-cleaned.txt")
+```
+
+```{r}
+#library("readr")
+#patients <- read_tsv("patient-data-cleaned.txt")
+patients <- read.csv("patient-data-cleaned.txt", sep = "\t")
+```
+
+## Quiz
+
+What relationship do you expect to see between Height & Weight?
+
+
+```{r}
+ggplot(data = patients) +
+    geom_point(mapping = aes(x=Weight, y=Height, colour = Sex))
+```
