@@ -30,21 +30,53 @@ Packages are an extension on the capabilities of Base R. A package may be instal
 library(ggplot2)
 ```
 
-## Visualise!
+## Check your Data
 For this session, we'll be using a built in dataset: "Miles per gallon"
 
-Before we 
+Before we start to visualise our data, it's always a good idea to make sure it looks basically right.
+
+Take a look at the data
 ```{r Check that data}
+#View(mpg)
 mpg
 ```
 
-```{r Your turn #1}
-ggplot(data=mpg) +
-    geom_point(mapping=aes(x=displ,y=hwy)) +
-    geom_smooth(mapping=aes(x=displ,y=hwy), method = 'lm')
+Check the structure of the data frame.
+```{r Check that data 2}
+str(mpg)
 ```
 
-```{r}
+Generate a summary of the data inside the data frame.
+```{r Check that data 3}
+summary(mpg)
+```
 
+Note that this only works because this dataset is built in.
+```{r Check that data 4}
+?mpg
+```
+
+### Quiz 1
+
+Take a minute to discuss with the person next to you:  
+What relationship do you expect to see between displ (engine volume) and hwy (fuel efficiency on the highway)?
+
+Put up a green sticky note when you're ready!
+
+## The Grammar of Graphics
+The "grammar of graphics" works by introducing consecutive layers of content onto a plot.
+
+First, we initalise the plot. This creates a plot object, and associates some data to it.
+```{r Intro to ggplot}
+ggplot(data = mpg)
+```
+
+As we can see, we've generated a blank canvas. The next thing to do is to specify which data we want to display.
+
+To do this, we add a "geom" layer on top of our canvas. In this case, the geom 'maps' the relevant data across a cartesian plane:
+
+```{r Intro to ggplot 2}
+ggplot(data=mpg) +
+    geom_point(mapping = aes(x=displ, y=hwy))
 ```
 
