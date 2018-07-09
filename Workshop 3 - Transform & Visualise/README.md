@@ -5,16 +5,14 @@ date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output: html_document
 ---
 
-# Introduction
+## Introduction
 
 This workshop introduces two R 'packages' that facilitate the manipulation and visualisation of rectangular data.
 
-<center>[<img src="https://www.rstudio.com/wp-content/uploads/2014/04/ggplot2.png" width="20%">][ggplot2_link]
-[<img src="https://www.rstudio.com/wp-content/uploads/2014/04/dplyr.png" width="20%">][dplyr_link]</center>
-
-[dplyr_link]:https://dplyr.tidyverse.org
-[ggplot2_link]:https://ggplot2.tidyverse.org
+<center><a href="https://dplyr.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/ggplot2.png" width="20%"></a>
+<a href="https://ggplot2.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/dplyr.png" width="20%"></a></center>
 <br>
+
 These packages extend the function of 'Base R' by leveraging 'grammar' to make R code more tidy and legible.
 
 __dplyr__ introduces a _grammar of data manipulation_, using verbs instead of traditional indexing notation to simplify the isolation and transformation of your data.
@@ -35,13 +33,13 @@ A dataset is *__tidy__* if:
   1. Each variable is in its own column,  
   2. Each individual observation is in its own row and,  
   3. Each value is in its own cell.
-<img src="http://garrettgman.github.io/images/tidy-4.png">
+<center><img src="http://garrettgman.github.io/images/tidy-4.png"></center>
 
 Further reading see:["Tidy Data, by Hadley Wickham"](http://www.jstatsoft.org/v59/i10/)  
 <br>
 __Data Science Lifecycle__: 'Data Science' is an iterative process composed of many steps, we only consider two parts of that process in this workshop.
 
-<img src="https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science.png">
+<center><img src="https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science.png"></center>
 
 Further reading see:["R for Data Science, by Garrett Grolemund & Hadley Wickham"](http://github.com/hadley/r4ds)
 
