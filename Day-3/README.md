@@ -63,7 +63,7 @@ You can start back where you leave off by opening the "r-intro.Rproj" file
 
 ## Acknowledgements
 
-The contents of this workshop are adapted from the University of Cambridge [Bioinformatics Training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate), and Hadley Wickham's one-day workshop: ["Exploring the Tidyverse"](https://github.com/hadley/data-science-in-tidyverse).
+The course material for this workshop has been adapted both from the University of Cambridge [Bioinformatics Training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate), and Hadley Wickham's one-day workshop: ["Exploring the Tidyverse"](https://github.com/hadley/data-science-in-tidyverse).
 
 ## License
 
