@@ -266,7 +266,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Introduction to Solving Biological Problems Using R - Week 1</h1>
-<h4 class="date"><em>Last modified: 09 Jul 2018</em></h4>
+<h4 class="date"><em>Last modified: 10 Jul 2018</em></h4>
 
 </div>
 
@@ -412,9 +412,16 @@ div.tocify {
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWdlICAgIDwtIGMoNTAsIDIxLCAzNSwgNDUsIDI4LCAzMSwgNDIsIDMzLCA1NywgNjIpXG53ZWlnaHQgPC0gYyg3MC44LCA2Ny45LCA3NS4zLCA2MS45LCA3Mi40LCA2OS45LCBcbiAgICAgICAgICAgIDYzLjUsIDcxLjUsIDczLjIsIDY0LjgpXG5gYGAifQ== -->
-<pre class="r"><code>age    &lt;- c(50, 21, 35, 45, 28, 31, 42, 33, 57, 62)
-weight &lt;- c(70.8, 67.9, 75.3, 61.9, 72.4, 69.9, 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWdlICAgIDwtIGMoNTAsIDIxLCAzNSwgNDUsIDI4LCAzMSwgNDIsIDMzLCA1NywgNjIpXG5gYGAifQ== -->
+<pre class="r"><code>age    &lt;- c(50, 21, 35, 45, 28, 31, 42, 33, 57, 62)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBtZXNzYWdlczpcbjE6IHBhY2thZ2Ug4oCYbGltbWHigJkgd2FzIGJ1aWx0IHVuZGVyIFIgdmVyc2lvbiAzLjQuMyBcbjI6IHBhY2thZ2Ug4oCYZWRnZVLigJkgd2FzIGJ1aWx0IHVuZGVyIFIgdmVyc2lvbiAzLjQuMyBcbiJ9 -->
+<pre><code>Warning messages:
+1: package ‘limma’ was built under R version 3.4.3 
+2: package ‘edgeR’ was built under R version 3.4.3 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VpZ2h0IDwtIGMoNzAuOCwgNjcuOSwgNzUuMywgNjEuOSwgNzIuNCwgNjkuOSwgXG4gICAgICAgICAgICA2My41LCA3MS41LCA3My4yLCA2NC44KVxuYGBgIn0= -->
+<pre class="r"><code>weight &lt;- c(70.8, 67.9, 75.3, 61.9, 72.4, 69.9, 
             63.5, 71.5, 73.2, 64.8)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -507,9 +514,9 @@ secondName &lt;- c(&quot;Jones&quot;, &quot;Parker&quot;, &quot;Evans&quot;, &qu
          &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;)
 sex</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIk1hbGVcIiAgIFwiRmVtYWxlXCIgXCJNYWxlXCIgICBcIkZlbWFsZVwiIFwiTWFsZVwiICAgXCJNYWxlXCIgICBcIkZlbWFsZVwiXG4gWzhdIFwiTWFsZVwiICAgXCJNYWxlXCIgICBcIkZlbWFsZVwiXG4ifQ== -->
-<pre><code> [1] &quot;Male&quot;   &quot;Female&quot; &quot;Male&quot;   &quot;Female&quot; &quot;Male&quot;   &quot;Male&quot;   &quot;Female&quot;
- [8] &quot;Male&quot;   &quot;Male&quot;   &quot;Female&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIk1hbGVcIiAgIFwiRmVtYWxlXCIgXCJNYWxlXCIgICBcIkZlbWFsZVwiIFwiTWFsZVwiICAgXCJNYWxlXCIgIFxuIFs3XSBcIkZlbWFsZVwiIFwiTWFsZVwiICAgXCJNYWxlXCIgICBcIkZlbWFsZVwiXG4ifQ== -->
+<pre><code> [1] &quot;Male&quot;   &quot;Female&quot; &quot;Male&quot;   &quot;Female&quot; &quot;Male&quot;   &quot;Male&quot;  
+ [7] &quot;Female&quot; &quot;Male&quot;   &quot;Male&quot;   &quot;Female&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -518,9 +525,9 @@ sex</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmFjdG9yKHNleClcbmBgYCJ9 -->
 <pre class="r"><code>factor(sex)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBNYWxlICAgRmVtYWxlIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgIFxuWzEwXSBGZW1hbGVcbkxldmVsczogRmVtYWxlIE1hbGVcbiJ9 -->
-<pre><code> [1] Male   Female Male   Female Male   Male   Female Male   Male  
-[10] Female
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBNYWxlICAgRmVtYWxlIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgICBGZW1hbGUgTWFsZSAgXG4gWzldIE1hbGUgICBGZW1hbGVcbkxldmVsczogRmVtYWxlIE1hbGVcbiJ9 -->
+<pre><code> [1] Male   Female Male   Female Male   Male   Female Male  
+ [9] Male   Female
 Levels: Female Male</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
@@ -642,9 +649,9 @@ Levels: Female Male</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF0aWVudHMkRmlyc3RfTmFtZVxuYGBgIn0= -->
 <pre class="r"><code>patients$First_Name</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBBZGFtICAgIEV2ZSAgICAgSm9obiAgICBNYXJ5ICAgIFBldGVyICAgUGF1bCAgICBKb2FubmEgIE1hdHRoZXdcbiBbOV0gRGF2aWQgICBTYWxseSAgXG4xMCBMZXZlbHM6IEFkYW0gRGF2aWQgRXZlIEpvYW5uYSBKb2huIE1hcnkgTWF0dGhldyBQYXVsIC4uLiBTYWxseVxuIn0= -->
-<pre><code> [1] Adam    Eve     John    Mary    Peter   Paul    Joanna  Matthew
- [9] David   Sally  
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBBZGFtICAgIEV2ZSAgICAgSm9obiAgICBNYXJ5ICAgIFBldGVyICAgUGF1bCAgICBKb2FubmEgXG4gWzhdIE1hdHRoZXcgRGF2aWQgICBTYWxseSAgXG4xMCBMZXZlbHM6IEFkYW0gRGF2aWQgRXZlIEpvYW5uYSBKb2huIE1hcnkgTWF0dGhldyBQYXVsIC4uLiBTYWxseVxuIn0= -->
+<pre><code> [1] Adam    Eve     John    Mary    Peter   Paul    Joanna 
+ [8] Matthew David   Sally  
 10 Levels: Adam David Eve Joanna John Mary Matthew Paul ... Sally</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
@@ -680,9 +687,9 @@ patients</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF0aWVudHMkU2V4XG5gYGAifQ== -->
 <pre class="r"><code>patients$Sex</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBNYWxlICAgRmVtYWxlIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgIFxuWzEwXSBGZW1hbGVcbkxldmVsczogRmVtYWxlIE1hbGVcbiJ9 -->
-<pre><code> [1] Male   Female Male   Female Male   Male   Female Male   Male  
-[10] Female
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBNYWxlICAgRmVtYWxlIE1hbGUgICBGZW1hbGUgTWFsZSAgIE1hbGUgICBGZW1hbGUgTWFsZSAgXG4gWzldIE1hbGUgICBGZW1hbGVcbkxldmVsczogRmVtYWxlIE1hbGVcbiJ9 -->
+<pre><code> [1] Male   Female Male   Female Male   Male   Female Male  
+ [9] Male   Female
 Levels: Female Male</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGF0aWVudHMkRmlyc3RfTmFtZVxuYGBgIn0= -->
@@ -863,13 +870,13 @@ patients</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGV0dGVyc1xuYGBgIn0= -->
 <pre class="r"><code>letters</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcImFcIiBcImJcIiBcImNcIiBcImRcIiBcImVcIiBcImZcIiBcImdcIiBcImhcIiBcImlcIiBcImpcIiBcImtcIiBcImxcIiBcIm1cIiBcIm5cIiBcIm9cIiBcInBcIlxuWzE3XSBcInFcIiBcInJcIiBcInNcIiBcInRcIiBcInVcIiBcInZcIiBcIndcIiBcInhcIiBcInlcIiBcInpcIlxuIn0= -->
-<pre><code> [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot;
-[17] &quot;q&quot; &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcImFcIiBcImJcIiBcImNcIiBcImRcIiBcImVcIiBcImZcIiBcImdcIiBcImhcIiBcImlcIiBcImpcIiBcImtcIiBcImxcIiBcIm1cIiBcIm5cIiBcIm9cIlxuWzE2XSBcInBcIiBcInFcIiBcInJcIiBcInNcIiBcInRcIiBcInVcIiBcInZcIiBcIndcIiBcInhcIiBcInlcIiBcInpcIlxuIn0= -->
+<pre><code> [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot;
+[16] &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucyA8LSBsZXR0ZXJzWzE6NV1cbnNcbmBgYCJ9 -->
-<pre class="r"><code>s &lt;- letters[1:5]
-s</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVycyA8LSBsZXR0ZXJzWzE6NV1cbm15X2xldHRlcnNcbmBgYCJ9 -->
+<pre class="r"><code>my_letters &lt;- letters[1:5]
+my_letters</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYVwiIFwiYlwiIFwiY1wiIFwiZFwiIFwiZVwiXG4ifQ== -->
 <pre><code>[1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
@@ -879,8 +886,8 @@ s</code></pre>
 <p>So far we have seen how to extract the first and third values in the vector</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc1tjKDEsMyldXG5gYGAifQ== -->
-<pre class="r"><code>s[c(1,3)]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVyc1tjKDEsMyldXG5gYGAifQ== -->
+<pre class="r"><code>my_letters[c(1,3)]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYVwiIFwiY1wiXG4ifQ== -->
 <pre><code>[1] &quot;a&quot; &quot;c&quot;</code></pre>
@@ -890,8 +897,8 @@ s</code></pre>
 <p>R can perform the same operation using a vector of logical values. Only indices with a <code>TRUE</code> value will get returned</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc1tjKFRSVUUsIEZBTFNFLCBUUlVFLCBGQUxTRSwgRkFMU0UpXVxuYGBgIn0= -->
-<pre class="r"><code>s[c(TRUE, FALSE, TRUE, FALSE, FALSE)]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVyc1tjKFRSVUUsIEZBTFNFLCBUUlVFLCBGQUxTRSwgRkFMU0UpXVxuYGBgIn0= -->
+<pre class="r"><code>my_letters[c(TRUE, FALSE, TRUE, FALSE, FALSE)]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYVwiIFwiY1wiXG4ifQ== -->
 <pre><code>[1] &quot;a&quot; &quot;c&quot;</code></pre>
@@ -913,8 +920,8 @@ a &lt; 3</code></pre>
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdICBUUlVFICBUUlVFIEZBTFNFIEZBTFNFIEZBTFNFXG4ifQ== -->
 <pre><code>[1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc1thIDwgM11cbmBgYCJ9 -->
-<pre class="r"><code>s[a &lt; 3]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVyc1thIDwgM11cbmBgYCJ9 -->
+<pre class="r"><code>my_letters[a &lt; 3]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYVwiIFwiYlwiXG4ifQ== -->
 <pre><code>[1] &quot;a&quot; &quot;b&quot;</code></pre>
@@ -934,14 +941,14 @@ a &lt; 3</code></pre>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc1thID4gMSAmIGEgPDNdXG5gYGAifQ== -->
-<pre class="r"><code>s[a &gt; 1 &amp; a &lt;3]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVyc1thID4gMSAmIGEgPDNdXG5gYGAifQ== -->
+<pre class="r"><code>my_letters[a &gt; 1 &amp; a &lt;3]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYlwiXG4ifQ== -->
 <pre><code>[1] &quot;b&quot;</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc1thID09IDJdXG5gYGAifQ== -->
-<pre class="r"><code>s[a == 2]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfbGV0dGVyc1thID09IDJdXG5gYGAifQ== -->
+<pre class="r"><code>my_letters[a == 2]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYlwiXG4ifQ== -->
 <pre><code>[1] &quot;b&quot;</code></pre>
