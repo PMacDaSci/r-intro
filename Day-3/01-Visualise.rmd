@@ -1,5 +1,8 @@
 ---
-title: 'Workshop 3.1: Visualise with ggplot2'
+title: "Workshop 3.1: Visualise with ggplot2"
+author: James Morgan, Lucy Liu
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 __Option 1__: Install the entire tidyverse  
 
-```{r Install the tidyverse, eval=FALSE}
+```{r Install the tidyverse}
 install.packages("tidyverse")
 ```
 This option will install ggplot, dplyr and about 70 other packages that are designed to work together under the same philosophy of tidy data.  
@@ -24,7 +27,7 @@ install.packages("ggplot2")
 ## Package Loading
 
 Packages are an extension on the capabilities of Base R. A package may be installed, but it can only be used after explicitly loading it into our envirionment.  
-```{r Load ggplot2, eval=FALSE}
+```{r Load ggplot2}
 library(ggplot2)
 ```
 
@@ -50,35 +53,49 @@ summary(mpg)
 ```
 
 Check the documentation...
-```{r Check that data 4}
+```{r Check that data 4, eval=FALSE}
 ?mpg
 ```
 Note that this one only works because this dataset is built in and documented by the package maintainers.
 
-### Quiz 1
-Now we know a little bit about the data...
-
-Take a minute to discuss with the person next to you:  
-What relationship do you expect to see between displ (engine volume (L)) and hwy (fuel efficiency on the highway)?
-
-Put up a green sticky note when you're ready!)
-
 ----------------------------------------------------------------------------------------------------------------------
 
-## The Grammar of Graphics
-The "grammar of graphics" works by introducing consecutive layers of content onto a plot.
+## ggplot and The Grammar of Graphics
 
-First, we initalise the plot. This creates a plot object, and associates some data to it.
+### ggspele
+ggplot is one of the most popular R packages. It allows you to create good looking graphs quickly and easily. It builds on the concept of the “Grammar of Graphics” (Wilkinson 2005, Bertin 1983) which describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.
+
+The structured syntax and high level of abstraction used by ggplot2 should allow for the user to concentrate on the visualisations instead of creating the underlying code.
+
+On top of this central philosophy ggplot2 has:
+
+* Increased flexibility over many plotting systems.
+* An advanced theme system for professional/publication level graphics.
+* Large developer base – Many libraries extending its flexibility.
+* Large user base – Great documentation and active mailing list.
+
+Let's start with the basic anatomy of ggplot code - or how to give R instructions to make your plot. 
+First you must tell ggplot what data you want to plot. 
+
+Ultimately - The "grammar of graphics" works by introducing consecutive layers of content onto a plot.
+
+First, we initalise the plot. `ggplot()` creates a plot object and links it to a dataset.
 ```{r Intro to ggplot}
 ggplot(data = mpg)
 ```
 
 As we can see, we've generated a blank canvas. The next thing to do is to specify which data we want to display.
 
-To do this, we add a "geom" layer on top of our canvas. In this case, the geom 'maps' the relevant data across a cartesian plane:
+To do this, we add a "geom" (geometric object) layer on top of our canvas. In this case, the geom 'maps' the relevant data across a cartesian plane:
 
 ```{r Intro to ggplot 2}
 ggplot(data=mpg) +
     geom_point(mapping = aes(x=displ, y=hwy))
+```
+
+
+```{r}
+ggplot(data=mpg) +
+    geom_point(mapping = aes(x=displ, y=hwy, stat='count'))
 ```
 

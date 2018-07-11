@@ -9,8 +9,8 @@ output: html_document
 
 This workshop introduces two R 'packages' that facilitate the manipulation and visualisation of rectangular data.
 
-<center><a href="https://dplyr.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/ggplot2.png" width="20%"></a>
-<a href="https://ggplot2.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/dplyr.png" width="20%"></a></center>
+<center><a href="https://ggplot2.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/ggplot2.png" width="20%"></a>
+<a href="https://dplyr.tidyverse.org"><img src="https://www.rstudio.com/wp-content/uploads/2014/04/dplyr.png" width="20%"></a></center>
 <br>
 
 These packages extend the function of 'Base R' by leveraging 'grammar' to make R code more tidy and legible.
@@ -51,12 +51,12 @@ To take this course, you'll need to install the following R packages:
 install.packages(c("tidyverse", "rmarkdown", "usethis"))
 ```
 
-###TBD - __This doesn't work yet__
+### Course Notes
 If you haven't already, you can grab a copy of all course content (?including other workshops in Peter Mac Bioinformatics' Introduction to R series.) by running the following:
 
 ```R
 setwd("Your_favourite_working_directory_here")
-usethis::use_course("link_tbd", destdir = getwd())
+usethis::use_course("https://tinyurl.com/pmdsc-r-intro-download", destdir = getwd())
 ```
 
 You can start back where you leave off by opening the "r-intro.Rproj" file
