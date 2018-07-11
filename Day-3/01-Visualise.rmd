@@ -161,6 +161,10 @@ You can use this code template to make thousands of graphs with **ggplot2**.
 
 ```{r, eval = FALSE}
 ggplot(data = <DATA>) +
-  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+    <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)) +
+    <COORDINATE_FUNCTION> +
+    <FACET_FUNCTION> +
+    <SCALE_FUNCTION> +
+    <THEME_FUNCTION> +
 ```
 
