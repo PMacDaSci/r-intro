@@ -16,7 +16,7 @@ library(tidyverse)
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
-Code goes in **code chunks**, denoted by three backticks *`*. Try executing this chunk by clicking the *Play* button within the chunk or by placing your cursor inside it and pressing *Crtl+Shift+Enter* (Windows) or *Cmd+Shift+Enter* (Mac). 
+Code goes in **code chunks**, denoted by three backticks *`*. Try executing this chunk by clicking the *Play* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter* (Windows) or *Cmd+Shift+Enter* (Mac). 
 
 __Your turn__: Run the code in this block.
 
