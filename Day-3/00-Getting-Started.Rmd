@@ -27,7 +27,7 @@ ggplot(data = mpg) +
 
 Add a new chunk by clicking the *Insert* button on the toolbar, then selecting *R* or by pressing  *Ctrl+Alt+I* (Windows) or *Cmd+Option+I* (Mac).
 
-You can __Knit__ a document ((click the *knitr* button or press *Ctrl+Shift+K* (Windows) or *Cmd+Shift+K* (Mac)) to produce a final report that you can share with others. This will re-run all the code and create a self-contained html file can you share with others.
+You can __Knit__ a document ((click the *Knit*/*Preview* button or press *Ctrl+Shift+K* (Windows) or *Cmd+Shift+K* (Mac)) to produce a final report that you can share with others. This will re-run all the code and create a self-contained html file can you share with others.
 
 __Your turn__: Knit this document and find the html file that it generates.
 
