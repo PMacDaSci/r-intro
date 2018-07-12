@@ -122,6 +122,7 @@ View(patients)
 class(patients)
 ```
 
+
 - We can query the dimensions:
 
 ```{r}
@@ -130,6 +131,10 @@ nrow(patients)
 dim(patients)
 ```
 
+- We can also examine the type of data in the frame:
+```{r}
+str(patients)
+```
 
 - The names of the columns are automatically assigned:
 
@@ -240,6 +245,12 @@ The `which` function will take a logical vector and return the indices of the `T
 ```{r}
 which(BMI > upper.limit)
 candidates <- which(BMI > upper.limit)
+```
+
+- Lets try again:
+
+```{r}
+patients[candidates,]
 ```
 
 

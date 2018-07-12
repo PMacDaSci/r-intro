@@ -1,0 +1,34 @@
+---
+title: "Getting started"
+output: html_notebook
+---
+
+<!-- 
+This file Creative Commons Attribution 4.0 International License. 
+See details at https://github.com/hadley/data-science-in-tidyverse 
+-->
+
+```{r setup}
+library(tidyverse)
+```
+
+## R notebooks
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Code goes in **code chunks**, denoted by three backticks (*`*). Try executing this chunk by clicking the *Play* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter* (Windows) or *Cmd+Shift+Enter* (Mac). 
+
+__Your turn__: Run the code in this block.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+Add a new chunk by clicking the *Insert* button on the toolbar, then selecting *R* or by pressing  *Ctrl+Alt+I* (Windows) or *Cmd+Option+I* (Mac).
+
+You can __Knit__ a document ((click the *Knit*/*Preview* button or press *Ctrl+Shift+K* (Windows) or *Cmd+Shift+K* (Mac)) to produce a final report that you can share with others. This will re-run all the code and create a self-contained html file can you share with others.
+
+__Your turn__: Knit this document and find the html file that it generates.
+
+__Your turn__: You're all done, so please put up a green post-it!
