@@ -44,11 +44,11 @@ This course provides an introduction to the R programming language and software 
 *(current and previous)*
 
 - Maria Doyle, Research Computing Facility
-- Roxane Legaie, Pathology
+- Roxane Legaie, Pathology Department
 - Lucy Liu, Victorian Centre for Functional Genomics
 - Miriam Yeung, Dawson Labs
 - Andrew Bakshi, Goode Lab
-- James Morgan, Familial Cancer Centre
+- James Morgan, Parkville Familial Cancer Centre
 
 
 ## Acknowledgements
