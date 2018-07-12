@@ -48,11 +48,11 @@ Further reading see:["R for Data Science, by Garrett Grolemund & Hadley Wickham"
 To take this course, you'll need to install the following R packages:
 
 ```R
-install.packages(c("tidyverse", "rmarkdown", "usethis"))
+install.packages(c("tidyverse", "rmarkdown", "usethis", "gapminder"))
 ```
 
 ### Course Notes
-If you haven't already, you can grab a copy of all course content (?including other workshops in Peter Mac Bioinformatics' Introduction to R series.) by running the following:
+If you haven't already, you can grab a copy of all course content (including other workshops in Peter Mac Bioinformatics' Introduction to R series.) by running the following:
 
 ```R
 setwd("Your_favourite_working_directory_here")

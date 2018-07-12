@@ -1,8 +1,7 @@
 ---
 title: "Workshop #3: dplyr & ggplot"
 author: Lucy Liu
-output:
-  pdf_document: default
+output: html_document
 ---
 
 The contents of this workshop are adapted from the University of Cambirdge [Bioinformatics training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
@@ -30,7 +29,7 @@ To import the data:
 2. Import your data into R. 
 
 ```{r}
-patients <- read.csv("patient-data-cleaned.txt")
+patients <- read.csv("patient-data-cleaned.txt", sep = "\t")
 library(dplyr)
 library(ggplot2)
 ```
@@ -124,7 +123,7 @@ patients %>%
   filter(Pet == c("Dog", "Bird"))
 ```
 
-The tip is, when you are looking for more than one thing (e.g. pet is either dog or birth), use %in%. When you are looking for only one thing (e.g. pet is a dog), use ==.
+The tip is, when you are looking for more than one thing (e.g. pet is either dog or bird), use %in%. When you are looking for only one thing (e.g. pet is a dog), use ==.
 
 You can combine select and filter together like this:
 ```{r,  eval=FALSE, echo=TRUE}
@@ -224,8 +223,6 @@ Now we must tell ggplot how to make the graph using aes ("aesthetics"). Here you
 ggplot(patients, aes(x=Height, y=Weight))
 ```
 Depending on the type of graph, there are other aesthetics you can map variables to. Let's start with a scatter graph. Apart from x and y axes, you can also map variables to size of points, colour of points and shape of points. We can map each of these aesthetics to a variable:
-
-![](image/ggplot1)
 
 Finally, we must tell ggplot what kind of graph we want to make. To do this we simply 'add' a geom like so: 
 ```{r}
@@ -405,7 +402,7 @@ So far no plot titles have been specified. Plot titles can be specified using th
 
 ```{r, theme_labs}
 
-pcPlot <- ggplot(data=patients_clean,
+pcPlot <- ggplot(data=patients,
         mapping=aes(x=Weight,y=Height))+geom_point()
 pcPlot+labs(title="Weight vs Height",y="Height (cm)")
 ```
@@ -414,7 +411,7 @@ or specified using the ggtitle and xlab/ylab functions.
 
 ```{r, theme_ggtitle}
 
-pcPlot <- ggplot(data=patients_clean,
+pcPlot <- ggplot(data=patients,
         mapping=aes(x=Height,y=Weight))+geom_point()
 pcPlot+ggtitle("Weight vs Height")+ylab("Height (cm)")
 ```
