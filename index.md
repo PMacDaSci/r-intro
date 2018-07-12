@@ -39,8 +39,20 @@ This course provides an introduction to the R programming language and software 
 
 ### Week 4
 
+## Course Presenters
+
+*(current and previous)*
+
+- Maria Doyle, Research Computing Facility
+- Roxane Legaie, Pathology
+- Lucy Liu, Victorian Centre for Functional Genomics
+- Miriam Yeung, Dawson Labs
+- Andrew Bakshi, Goode Lab
+- James Morgan, Familial Cancer Centre
+
+
 ## Acknowledgements
-This course is based on the R course run regularly at the University of Cambridge through the Bioinformatics Training Facility:
+This course is run by the Peter Mac Data Science Training team and is based on the R course run regularly at the University of Cambridge:
 [http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro](http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro)
 
 ## Useful Resources
