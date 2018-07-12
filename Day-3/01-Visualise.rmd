@@ -1,6 +1,6 @@
 ---
 title: "Workshop 3.1: Visualise with ggplot2"
-author: James Morgan, Lucy Liu
+author: James Morgan, Lucy Liu, Hadley Wickham
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output: html_document
 ---
@@ -165,6 +165,6 @@ ggplot(data = <DATA>) +
     <COORDINATE_FUNCTION> +
     <FACET_FUNCTION> +
     <SCALE_FUNCTION> +
-    <THEME_FUNCTION> +
+    <THEME_FUNCTION>
 ```
 
