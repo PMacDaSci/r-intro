@@ -1,14 +1,13 @@
 ---
-title: "Introduction to Solving Biological Problems Using R - Day 1"
-author: Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
-  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts
+title: "Introduction to Solving Biological Problems Using R - Week 2"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   html_notebook:
     toc: yes
     toc_float: yes
 ---
-
+*PeterMac Data Science's modified version of material by the University of Cambridge (Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
+  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts)*
 
 
 # 4. Plotting in R
@@ -352,12 +351,3 @@ display.brewer.all(colorblindFriendly = TRUE)
 weather <- read.csv("ozone.csv")
 boxplot(weather$Temp ~ weather$Month,col=brewer.pal(5,"Set1"))
 ```
-
-
-#End of Day 1
-
-## To come tomorrow...
-- More customisation of plots
-- Statistics
-- Further manipulation of data
-- Report writing
