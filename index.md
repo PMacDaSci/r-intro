@@ -32,8 +32,8 @@ This course provides an introduction to the R programming language and software 
 - [Data Structures](https://rawgit.com/pmacdasci/r-intro/master/Session1.2-data-structures.nb.html)
 
 ### Week 2
-- [Analysis Walkthrough]
-- [Introduction to Plotting]
+- [Analysis Walkthrough](https://rawgit.com/pmacdasci/r-intro/master/Session1.3-walkthrough.nb.html)
+- [Introduction to Plotting](https://rawgit.com/pmacdasci/r-intro/master/Session1.4-plotting.nb.html)
 
 ### Week 3
 
