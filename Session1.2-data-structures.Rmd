@@ -461,3 +461,13 @@ and now try out these functions:-
 cbind(mat1,mat2)
 rbind(mat1,mat3)
 ```
+
+## Key points
+
+* Although the basic unit of R is a vector, we usually handle data in data frames
+* Each column of a data frame is a vector and can be either numeric, character or logical
+* Columns from the data frame can be accessed using the ‘$’ operator
+* A factor is R’s data structure for categorical data
+* We can ask R not to treat strings as factors with `stringsAsFactors=FALSE`
+* Data frames can be indexed using dataframe[rows, columns]
+* Multiple logical tests can be combined with operators (e.g. dataframe[x > 1 & x < 3, ])
