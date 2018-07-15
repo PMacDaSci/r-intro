@@ -652,3 +652,12 @@ library()        # Lists all the packages
                  # you've got installed 
 ```
 
+## Key points
+
+ * In programming, a variable is a letter or word which takes (or contains) a value
+ * In R, the assignment operator <- is used to assign values to variables
+ * The basic data structure in R is a vector – an ordered collection of values
+ * A function is a unit of code that can take arguments and perform a set of instructions
+ * The function c combines its arguments into a vector
+ * All standard arithmetic operations are applied to vectors element-wise
+ * To get help on any R function, type ? followed by the function name
