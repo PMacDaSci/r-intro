@@ -3,6 +3,14 @@ This course provides an introduction to the R programming language and software 
 
 ![R workshop](images/rintro.jpg)
 
+## Course Objectives
+
+After this course you should be able to:
+
+* Import data and plot graphs
+* Install and use R packages
+* Create a documented and reproducible piece of R code
+
 ## Topics Covered
 
 ### Week 1
