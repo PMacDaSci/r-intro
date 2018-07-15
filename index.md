@@ -50,6 +50,14 @@ This course provides an introduction to the R programming language and software 
 - Andrew Bakshi, Goode Lab
 - James Morgan, Parkville Familial Cancer Centre
 
+## Course Helpers
+
+*(current and previous, includes all above)*
+
+- Liz Christie, Bowtell Lab
+- Anna Trigos, Goode Lab
+- David Ma, Pathology Department
+- Yamuna Kankanige, Pathology Department
 
 ## Acknowledgements
 This course is run by the Peter Mac Data Science Training team and is based on the R course run regularly at the University of Cambridge:
