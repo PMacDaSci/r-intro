@@ -1,13 +1,13 @@
 ---
-title: "Introduction to Solving Biological Problems Using R - Day 1"
-author: Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
-  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts
+title: "Introduction to Solving Biological Problems Using R - Week 2"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
   html_notebook:
     toc: yes
     toc_float: yes
 ---
+*PeterMac Data Science's modified version of material by the University of Cambridge (Mark Dunning, Suraj Menon and Aiora Zabala. Original material by Robert Stojnić,
+  Laurent Gatto, Rob Foy, John Davey, Dávid Molnár and Ian Roberts)*
 
 # 3. R for data analysis
 
@@ -55,15 +55,15 @@ Before we even start the analysis, we need to be sure of where the data are loca
 getwd()
 ```
 
-- If the file you want to read is in your working directory, you can just use the file name
 
-```{r eval=FALSE}
+- If the file you want to read is in your working directory, you can just use the file name
+```{r}
 list.files()
 ```
 
+
 - The `file.exists` function does exactly what it says on the tin!
     + a good sanity check for your code
-
 ```{r}
 file.exists("patient-info.txt")
 ```
