@@ -3,27 +3,31 @@ This course provides an introduction to the R programming language and software 
 
 ![R workshop](images/rintro.jpg)
 
+## Course Objectives
+
+After this course you should be able to:
+
+* Import data and plot graphs
+* Install and use R packages
+* Create a documented and reproducible piece of R code
+
 ## Topics Covered
 
 ### Week 1
-- R environment
-- Informal introduction to R basics
+- Introduction to R basics and environment
 - Understanding data types
 
 ### Week 2
-- Basic built-in functions for data manipulation
 - Reading and writing data tables
 - Basic R graphics
 
 ### Week 3
 - dplyr package for data manipulation
 - ggplot2 package for plotting
-- Customized plotting functions
 
 ### Week 4
-- Data analysis and R automation with examples
-- Functions as procedures
-- Functions with arguments
+- Automating the generation of multiple plots
+- Applying conditions to the data to be plotted
 
 ## Course Materials
 
@@ -36,8 +40,12 @@ This course provides an introduction to the R programming language and software 
 - [Introduction to Plotting](https://rawgit.com/pmacdasci/r-intro/master/Session1.4-plotting.nb.html)
 
 ### Week 3
+- ...
+- ...
 
 ### Week 4
+- ...
+- ...
 
 ## Course Presenters
 
@@ -60,8 +68,7 @@ This course provides an introduction to the R programming language and software 
 - Yamuna Kankanige, Pathology Department
 
 ## Acknowledgements
-This course is run by the Peter Mac Data Science Training team and is based on the R course run regularly at the University of Cambridge:
-[http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro](http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro)
+This course is run by the Peter Mac Data Science Training team and is based on the R course run regularly at the [University of Cambridge](http://training.csx.cam.ac.uk/bioinformatics/course/bioinfo-rintro)
 
 ## Useful Resources
 
