@@ -1,0 +1,170 @@
+---
+title: "Workshop 3.1: Visualise with ggplot2"
+author: James Morgan, Lucy Liu, Hadley Wickham
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: html_document
+---
+
+## Package Loading
+
+Packages are an extension on the capabilities of Base R. A package may be installed, but it can only be used after explicitly loading it into our envirionment.  
+```{r setup}
+library(ggplot2)
+```
+
+## Check your Data
+For this session, we'll be using a dataset that's provided with ggplot2: "mpg"
+
+Before we start to visualise our data, you should always know a little bit about it. So let's take a look!.
+
+
+```{r Check that data}
+#View(mpg)
+mpg
+```
+
+Check the data structure.
+```{r Check that data 2}
+str(mpg)
+```
+
+Generate a summary of the data inside the data frame.
+```{r Check that data 3}
+summary(mpg)
+```
+
+Check the documentation...
+```{r Check that data 4, eval=FALSE}
+?mpg
+```
+Note that this one only works because this dataset is built in and documented by the package maintainers.
+
+## Quiz
+
+What relationship do you expect to see between engine size (displ) and highway fuel efficiency (hwy)?
+
+----------------------------------------------------------------------
+
+## ggplot and The Grammar of Graphics
+
+### ggspele
+ggplot is one of the most popular R packages. It allows you to create good looking graphs quickly and easily. It builds on the concept of the “Grammar of Graphics” (Wilkinson 2005, Bertin 1983) which describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.
+
+The structured syntax and high level of abstraction used by ggplot2 should allow for the user to concentrate on the visualisations instead of creating the underlying code.
+
+On top of this central philosophy ggplot2 has:
+
+* Increased flexibility over many plotting systems.
+* An advanced theme system for professional/publication level graphics.
+* Large developer base – Many libraries extending its flexibility.
+* Large user base – Great documentation and active mailing list.
+
+Let's start with the basic anatomy of ggplot code - or how to give R instructions to make your plot. 
+First you must tell ggplot what data you want to plot. 
+
+Ultimately - The "grammar of graphics" works by introducing consecutive layers of content onto a plot.
+
+First, we initalise the plot. `ggplot()` creates a plot object and links it to a dataset.
+```{r Intro to ggplot}
+ggplot(data = mpg)
+```
+
+## Your Turn 1
+
+Type in the code from the slide, and run it to make a graph. Pay strict attention to spelling, capitalization, and parentheses.
+
+I strongly recommend typing it, even though copying and pasting is easier! Re-typing it will help your fingers learn the patterns you'll need to apply to your own data analyses.
+
+```{r}
+
+
+```
+
+Remember to raise a post-it if you get stuck, and then once you're done!
+
+## Your Turn 2
+
+Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.  
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+## Your Turn 3
+
+Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Guess!
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = hwy))
+```
+
+## Your Turn 4
+
+Make a histogram of the `hwy` variable from `mpg`.
+
+```{r}
+ggplot(data = mpg) 
+
+```
+
+## Your Turn 5
+
+Make a density plot of `hwy` colored by `class`.
+
+```{r}
+ggplot(data = mpg) 
+
+```
+
+## Your Turn 6
+
+Make a bar chart `class` colored by `class`.
+
+```{r}
+ggplot(data = mpg) 
+
+```
+
+## Your Turn 7
+
+Predict what this code will do. Then run it.
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+```
+
+## Your Turn 8
+
+What does `getwd()` return?
+
+```{r}
+getwd()
+```
+
+## Your Turn 9
+
+Save the last plot and then locate it in the files pane. Next find it on your desktop.
+
+```{r}
+
+```
+
+***
+
+# Take aways
+
+You can use this code template to make thousands of graphs with **ggplot2**.
+
+```{r, eval = FALSE}
+ggplot(data = <DATA>) +
+    <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)) +
+    <COORDINATE_FUNCTION> +
+    <FACET_FUNCTION> +
+    <SCALE_FUNCTION> +
+    <THEME_FUNCTION>
+```
+
