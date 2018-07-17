@@ -1,0 +1,58 @@
+
+```{r diamonds bar chart}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=cut, fill=clarity))
+```
+
+```{r add text}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=cut, fill=clarity)) +
+    labs(x='Diamond Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut")
+```
+```{r change bar positions}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=cut, fill=clarity), position = 'dodge') +
+    labs(x='Diamond Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut")
+```
+
+```{r change plot theme}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=clarity, fill=clarity), position = 'dodge') +
+    labs(x='Diamond Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut") +
+    theme_light()
+```
+
+```{r change colour palette}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=clarity, fill=clarity), position = 'dodge') +
+    labs(x='Diamond Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut") +
+    theme_light() +
+    scale_fill_brewer(palette = "Spectral")
+```
+
+
+```{r add facets}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=clarity, fill=clarity), position = 'dodge') +
+    labs(x='Diamond Clarity by Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut") +
+    theme_light() +
+    scale_fill_brewer(palette = "Spectral") +
+    facet_wrap(~cut)
+```
+
+```{r change coordinate system}
+diamonds %>% ggplot() +
+    geom_bar(aes(x=clarity, fill=clarity), position = 'dodge') +
+    labs(x='Diamond Clarity by Cut', caption ="data modified from ggplot2::diamonds") +
+    ggtitle("Diamond Bar Chart", subtitle = "We have more 'Ideal' diamonds than any other cut") +
+    theme_light() +
+    scale_fill_brewer(palette = "Spectral") +
+    facet_wrap(~cut) +
+    coord_polar()
+```
+

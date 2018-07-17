@@ -1,0 +1,26 @@
+```{r setup}
+library(tidyverse)
+```
+
+```{r import data}
+ozone <- read.csv('../ozone.csv')
+```
+
+```{r}
+plot(x=ozone$Solar.R, y=ozone$Ozone, 
+     xlab = "Solar Radiation",
+     ylab = "Ozone concentration",
+     col = 'Orange', pch = 16)
+```
+
+```{r}
+ggplot(ozone, aes(x=Solar.R,y=Ozone)) +
+    geom_point(colour='Orange', size = 2) +
+    labs(x="Solar Radiation", y="Ozone Concentration") +
+    theme_classic()
+```
+
+
+
+
+

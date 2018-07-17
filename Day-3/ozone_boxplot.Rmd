@@ -1,0 +1,37 @@
+
+```{r setup}
+library(tidyverse)
+```
+
+```{r read in the data}
+ozone_old <- read.csv('../ozone.csv')
+    #this is the dataset we practiced plotting with last week.
+ozone_clean <- read.csv("ozone_clean.csv") %>% 
+    mutate(Month = factor(month.abb[Month], levels = month.abb))
+    #This dataset has been recoded such that the Month variable is composed of ordered factors
+        # We have also replaced any missing values (In the Ozone and Solar.R variables) with the mean for the relevant month
+```
+
+## Plot the old ozone data with base plots
+```{r base plot ozone}
+boxplot(ozone_old$Ozone~ozone_old$Month, col=brewer.pal(5, "Spectral"))
+```
+ 
+#Plot the old ozone data with ggplot2, fixes with dplyr
+```{r}
+ozone_old %>% 
+    mutate(Month = factor(month.abb[Month], levels = month.abb)) %>% 
+    ggplot() +
+        geom_boxplot(aes(x=Month,y=Ozone, fill=Month, group = Month)) +
+        scale_fill_brewer(palette='Spectral')
+```
+
+## Plot the clean ozone data with ggplot2
+```{r ggplot ozone}
+ozone_clean %>% 
+    ggplot() +
+        geom_boxplot(aes(x=Month,y=Ozone, fill=Month)) +
+        scale_fill_brewer(palette='Spectral')
+```
+
+
