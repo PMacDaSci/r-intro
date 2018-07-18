@@ -1,6 +1,6 @@
 ---
-title: "Workshop #3 Exercises: dplyr & ggplot"
-author: Lucy Liu, James Morgan
+title: 'Workshop #3 Exercises: dplyr & ggplot'
+author: "Lucy Liu, James Morgan"
 output: html_notebook
 ---
 
@@ -21,7 +21,9 @@ library(tidyverse)
 head(patients,10)
 
 str(patients)
-    #have a think about what format you'd expect these variables to be. What do you think about `Birth`? 
+    #Have a think about what format you'd expect these variables to be. 
+    #What do you think about `Birth`? 
+        #For some homework, you might be interested to look into library(lubridate)...
 ```
 
 ###Return a data frame that contains only those individuals who have a pet Dog or Bird

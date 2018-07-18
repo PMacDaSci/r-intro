@@ -1,7 +1,8 @@
 ---
-title: "Workshop #3 Exercises: dplyr & ggplot"
-author: Lucy Liu, James Morgan
-output: html_notebook
+title: 'Workshop #3 Exercises: dplyr & ggplot'
+author: "Lucy Liu, James Morgan"
+output:
+  html_notebook
 ---
 
 The contents of this workshop are adapted from the University of Cambirdge [Bioinformatics training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
