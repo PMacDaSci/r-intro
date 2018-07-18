@@ -1,5 +1,8 @@
 ---
 title: "Transform data"
+author: James Morgan, Lucy Liu, Hadley Wickham
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: html_notebook
 ---
 
 <!-- 
@@ -69,6 +72,13 @@ filter(gapminder, country == "New Zealand", year > 2000)
 ```{r}
 filter(gapminder, country == "New Zealand", year > 2000)
 ```
+
+* BONUS: Countries outside of Africa that had an average life expectancy between 30 & 35 years in 1952
+
+```{r}
+
+```
+
 
 ## Your Turn 3
 
