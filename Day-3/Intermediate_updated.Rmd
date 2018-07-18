@@ -1,17 +1,21 @@
 ---
-title: "Workshop #3: dplyr & ggplot"
-author: Lucy Liu
-output: html_document
+title: "Introduction to Solving Biological Problems Using R - Week 3"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
 ---
+*Lucy Liu*
 
-The contents of this workshop are adapted from the University of Cambirdge [Bioinformatics training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
+The contents of this workshop are adapted from the University of Cambridge [Bioinformatics training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
 
 #Introduction
-This section is on the R packages 'dplyr' and 'ggplot.' 
+This section is on the R packages `dplyr` and `ggplot`. 
 
 Base R: We call R by itself (without adding any packages) 'base R'. It comes with a lot of functions but you can also add to these functions by installing packages. You can think of this as like installing apps on your phone - it adds extra functions.
 
-Packages: You can think of packages as a bundle of functions. The 'dplyr' package is a bundle of functions for manipulating your data. The 'ggplot' is a bundle of functions for making plots and it is one of the most popular packages! They were both written by the same person and they work well together.
+Packages: You can think of packages as a bundle of functions. The `dplyr` package is a bundle of functions for manipulating your data. The `ggplot2` package is a bundle of functions for making plots and it is one of the most popular packages! They were both written by the same person and they work well together.
 
 #Package installation 
 You need to install packages first before you use them. To install a package that you have not used before requires 2 steps:
@@ -34,9 +38,9 @@ library(dplyr)
 library(ggplot2)
 ```
 
-#DPLYR
-A vital function in dplyr is called the 'pipe' %>%
-You can think about this as a pipe, that sends data through to the next function. We'll use the function select() to demonstrate this.
+#dplyr
+A vital function in dplyr is called the 'pipe' `%>%`
+You can think about this as a pipe that sends data through to the next function. We'll use the function select() to demonstrate this.
 
 ##select
 The select() function let's you select columns in your data.
@@ -44,7 +48,7 @@ The select() function let's you select columns in your data.
 patients %>%
   select(Name)
 ```
-What's happening here, is that we start with our data, the variable called 'patients', we are piping the data to the first function called select() which is selecting just the column named 'Name'. 
+What's happening here, is that we start with our data, the variable called `patients`, we are piping the data to the first function called select() which is selecting just the column named `Name`. 
 
 To select all columns apart from Name:
 ```{r,  eval=FALSE, echo=TRUE}
@@ -96,7 +100,7 @@ patients %>%
 ```
 You can also use & here. It is exactly the same as a comma.
 
-To choose all the rows where the patient's height is above 170 or (symbol for or is '|') their pet is a dog, we use:
+To choose all the rows where the patient's height is above 170 or (symbol for or is `|`) their pet is a dog, we use:
 ```{r,  eval=FALSE, echo=TRUE}
 patients %>%
   filter(Height > '170' | Pet == 'Dog') %>%
@@ -198,7 +202,7 @@ patients <- patients %>%
   mutate(BMI = Weight/(Height/100)^2)
 ```
 
-#ggplot
+#ggplot2
 ggplot is one of the most popular packages in R and allows you to create good looking graphs easily. It builds on the concept of the “Grammar of Graphics” (Wilkinson 2005, Bertin 1983) which describes a consistent syntax for the construction of a wide range of complex graphics by a concise description of their components.
 
 The structured syntax and high level of abstraction used by ggplot2 should allow for the user to concentrate on the visualisations instead of creating the underlying code.
