@@ -1,0 +1,30 @@
+```{r setup}
+library(tidyverse)
+```
+
+```{r import data}
+ozone <- read.csv('../ozone.csv')
+```
+
+```{r}
+#png(filename = 'Assets/images/plots/base_scatter.png')
+plot(x=ozone$Solar.R, y=ozone$Ozone, 
+     xlab = "Solar Radiation",
+     ylab = "Ozone concentration",
+     col = 'Orange', pch = 16)
+#dev.off()
+```
+
+```{r}
+ggplot(ozone, aes(x=Solar.R,y=Ozone)) +
+    geom_point(colour='Orange', size = 2) +
+    labs(x="Solar Radiation", y="Ozone Concentration") +
+    theme_classic()
+
+#ggsave("Assets/images/plots/gg_scatter.png")
+```
+
+
+
+
+

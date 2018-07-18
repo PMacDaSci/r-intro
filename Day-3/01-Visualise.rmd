@@ -2,7 +2,7 @@
 title: "Workshop 3.1: Visualise with ggplot2"
 author: James Morgan, Lucy Liu, Hadley Wickham
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output: html_document
+output: html_notebook
 ---
 
 ## Package Loading
@@ -77,7 +77,6 @@ I strongly recommend typing it, even though copying and pasting is easier! Re-ty
 
 ```{r}
 
-
 ```
 
 Remember to raise a post-it if you get stuck, and then once you're done!
@@ -88,7 +87,7 @@ Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.
 
 ```{r}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = displ, y = hwy))
+    geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
 ## Your Turn 3
@@ -97,7 +96,7 @@ Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Guess
 
 ```{r}
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = class, y = hwy))
+    geom_point(mapping = aes(x = class, y = hwy))
 ```
 
 ## Your Turn 4
@@ -133,8 +132,8 @@ Predict what this code will do. Then run it.
 
 ```{r}
 ggplot(mpg) + 
-  geom_point(aes(displ, hwy)) +
-  geom_smooth(aes(displ, hwy))
+    geom_point(aes(displ, hwy)) +
+    geom_smooth(aes(displ, hwy))
 ```
 
 ## Your Turn 8

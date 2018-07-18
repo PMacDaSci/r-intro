@@ -1,0 +1,21 @@
+```{r setup}
+library(tidyverse)
+library(naniar)
+```
+
+#Clean Ozone
+This chunk will read in the existing ozone dataset.
+    In order to work better with ggplot2 we need to fix a few things:
+        * `Months` is coded with integers, we will recode this into an ordered factor variable
+        * Both `Ozone` and `Solar.R` contain missing values, we will impute the monthly mean to replace NA values.
+    Once that's done, we'll save a copy of the clean dataset for future use.
+```{r clean ozone}
+ozone <- read_csv('../ozone.csv')
+
+ozone <- ozone %>% 
+    group_by(Month) %>% 
+    mutate(Ozone = round(impute_mean(Ozone),0),
+           Solar.R = round(impute_mean(Solar.R),0)) %>% 
+    ungroup() %>% 
+    write_csv(path = 'ozone_clean.csv')
+```

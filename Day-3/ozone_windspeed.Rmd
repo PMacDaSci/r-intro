@@ -1,0 +1,36 @@
+
+```{r setup}
+library(tidyverse)
+```
+
+```{r}
+ozone <- read.csv("../ozone.csv")
+```
+
+```{r}
+#png("Assets/images/plots/base_histogram.png")
+hist(ozone$Wind, breaks = 20, 
+     col = "purple",
+     xlab = "Wind Speed",
+     main = "Distribution of Wind Speed",
+     freq = FALSE)
+#dev.off()
+```
+
+```{r}
+ggplot(ozone, aes(x=Wind, y=..density..)) +
+    geom_histogram(bins=20, 
+                   fill = 'purple', 
+                   col = 'black', 
+                   position='identity') +
+    labs(x="Wind Speed", y="Density") +
+    ggtitle("Distribution of Wind Speed") +
+    theme_classic() +
+    theme(plot.title = element_text(hjust = 0.5, face = 'bold'))
+
+#ggsave("Assets/images/plots/gg_histogram.png")
+```
+
+ 
+
+

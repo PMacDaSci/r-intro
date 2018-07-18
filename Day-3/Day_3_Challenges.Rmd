@@ -1,0 +1,67 @@
+---
+title: "Workshop #3 Exercises: dplyr & ggplot"
+author: Lucy Liu, James Morgan
+output: html_notebook
+---
+
+The contents of this workshop are adapted from the University of Cambirdge [Bioinformatics training](https://bioinfotraining.bio.cam.ac.uk/) workshop ["Data Manipulation and Visualisation using R"](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
+
+```{r setup}
+#setwd('your/filepath/here/r-intro/Day-3')
+
+patients <- read.csv("patients-info.txt", sep="\t")
+
+library(tidyverse)
+```
+
+#Data Exploration
+```{r}
+head(patients,10)
+
+str(patients)
+    #have a think about what format you'd expect these variables to be. What do you think about `Birth`? 
+```
+
+###Return a data frame that contains only those individuals who have a pet Dog or Bird
+```{r}
+
+```
+
+### Using the same criteria, show only `Name`, `Race` & `Sex`.
+```{r}
+
+```
+
+### Save a data frame with an extra column that contains the BMI for each individual.
+
+```{r}
+
+```
+
+### Return a data frame containing the name, sex, age and weight for all overweight (BMI>25) individuals who smoke, and are still alive. 
+
+```{r}
+
+```
+
+### Return a data frame containing the average patient height.
+```{r}
+
+```
+### Now report the average weight per state.
+```{r}
+
+```
+
+
+### Can you report average heights and weights for males and females in each state??
+```{r}
+
+```
+
+### Challenge: Find the proportion of smokers in each sex?
+    Hint - R stores and can interpret booleans as follows: TRUE == 1, FALSE == 0. 
+    So we can calculate a proportion by taking the mean of a boolean vector.
+```{r}
+
+```
