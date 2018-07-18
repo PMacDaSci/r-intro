@@ -1,5 +1,7 @@
 ---
 title: "Getting started"
+author: James Morgan, Lucy Liu, Hadley Wickham
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output: html_notebook
 ---
 
