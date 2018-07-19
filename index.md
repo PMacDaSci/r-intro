@@ -44,7 +44,6 @@ After this course you should be able to:
 
 ### Week 4
 - ...
-- ...
 
 ## Course Presenters
 
