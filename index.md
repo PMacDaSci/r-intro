@@ -43,7 +43,7 @@ After this course you should be able to:
 - [dplyr and ggplot2](https://rawgit.com/pmacdasci/r-intro/master/Day-3/Intermediate_updated.nb.html)
 
 ### Week 4
-- ...
+- [Automating Plotting](https://rawgit.com/pmacdasci/r-intro/master/Session2.4-programming.nb.html)
 
 ## Course Presenters
 
